@@ -28,8 +28,7 @@ const features = [
   },
 ];
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1414609245224-afa02dfd8543?auto=format&fit=crop&w=1920&q=80";
+const HERO_IMAGE = "/images/home/hero.webp";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);

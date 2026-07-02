@@ -12,13 +12,13 @@ export default function RoomCard({ room, priority = false }: RoomCardProps) {
   return (
     <article className="room-card card-resort img-zoom" aria-label={room.name}>
       <Link href={`/${room.slug}`} className="room-card-image-link" tabIndex={-1} aria-hidden="true">
-        <div className="room-card-image">
+        <div className="room-card-image-wrap">
           <Image
             src={room.images[0]}
             alt={`${room.name} at Tropical Bay by Malpe`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="room-card-img"
+            className="room-card-image"
             priority={priority}
           />
           <div className="room-card-overlay" aria-hidden="true" />

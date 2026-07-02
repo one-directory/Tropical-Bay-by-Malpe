@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const ABOUT_IMAGE =
-  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80";
+const ABOUT_IMAGE = "/images/about/about-resort.jpg";
 
 export default function Welcome() {
   return (
