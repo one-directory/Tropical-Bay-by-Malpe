@@ -8,49 +8,49 @@ const featuredExperiences = [
     title: "Sunrise Yoga",
     category: "Wellness",
     description: "Greet the day with a meditative beach session led by our in-house instructor.",
-    gradient: "linear-gradient(135deg, #0A2540 0%, #479694 100%)",
+    gradient: "linear-gradient(135deg, var(--color-primary) 0%, #4d9386 100%)",
     href: "/experience",
   },
   {
     title: "Boat Ride to St. Mary's Island",
     category: "Adventure",
     description: "Explore a UNESCO geological wonder just 20 minutes from our shore.",
-    gradient: "linear-gradient(135deg, #0A2540 0%, #16375a 100%)",
+    gradient: "linear-gradient(135deg, var(--color-primary) 0%, #28506A 100%)",
     href: "/experience",
   },
   {
     title: "Beachside Bonfire",
     category: "Evening",
     description: "Stars above, fire crackling, waves lapping — a Malpe night at its finest.",
-    gradient: "linear-gradient(135deg, #103635 0%, #2F6F6D 100%)",
+    gradient: "linear-gradient(135deg, #2c5c53 0%, var(--color-accent) 100%)",
     href: "/experience",
   },
   {
     title: "Seafood Dining",
     category: "Culinary",
     description: "Freshly caught coastal fare at The Palm Table, right by the sea.",
-    gradient: "linear-gradient(135deg, #A6803F 0%, #C9A96E 100%)",
+    gradient: "linear-gradient(135deg, #b09257 0%, var(--color-secondary) 100%)",
     href: "/experience",
   },
   {
     title: "Kayaking",
     category: "Water Sport",
     description: "Paddle along the coast and discover sea caves and tidal formations.",
-    gradient: "linear-gradient(135deg, #06182b 0%, #2F6F6D 100%)",
+    gradient: "linear-gradient(135deg, #0d2238 0%, var(--color-accent) 100%)",
     href: "/experience",
   },
   {
     title: "Nature Walk",
     category: "Guided",
     description: "Discover the coastal biodiversity of Malpe with our resident naturalist.",
-    gradient: "linear-gradient(135deg, #103635 0%, #2F6F6D 100%)",
+    gradient: "linear-gradient(135deg, #2c5c53 0%, var(--color-accent) 100%)",
     href: "/experience",
   },
 ];
 
 export default function Experiences() {
   return (
-    <section className="experiences section-padding-lg bg-cream" aria-labelledby="experiences-heading">
+    <section className="experiences section-padding-lg bg-off-white" aria-labelledby="experiences-heading">
       <div className="container-resort">
         <div className="experiences-header">
           <SectionHeading

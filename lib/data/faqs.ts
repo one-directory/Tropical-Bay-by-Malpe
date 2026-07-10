@@ -34,23 +34,23 @@ export const faqs: FAQItem[] = [
   {
     id: "f5",
     category: "Stay & Rooms",
-    question: "What is the difference between your suite categories?",
+    question: "What is the difference between your room categories?",
     answer:
-      "The King Suite (72 sq m) is our flagship offering with direct ocean views, a private terrace, and a clawfoot soaking tub — ideal for the most discerning travellers. The Queen Suite (54 sq m) offers garden and partial sea views with a private balcony and is perfect for couples. The Superior Suite (38 sq m) is a refined and comfortable space ideal for solo travellers or couples seeking great-value luxury.",
+      "We offer six categories of riverside sanctuaries: the 2BH (800 sq ft, up to 10 guests), Gulum Riverside Cottage (150 sq ft, up to 3 guests), First Floor (120 sq ft, up to 2 guests), Large AC Room (160 sq ft, up to 3 guests), Small AC Room (120 sq ft, up to 3 guests), and the Riverside Dormitory (900 sq ft, up to 15 guests). Each space is crafted to offer stunning riverfront views and pristine natural surroundings.",
   },
   {
     id: "f6",
     category: "Stay & Rooms",
     question: "Are your rooms air-conditioned?",
     answer:
-      "Yes, all suites at Tropical Bay are fully air-conditioned with individually controlled temperature settings. The natural coastal breeze also provides excellent ventilation, and many guests enjoy sleeping with the windows open.",
+      "Air conditioning is provided in our Small AC Room, Large AC Room, and First Floor. Our Gulum Riverside Cottage, 2BH, and Riverside Dormitory are designed for natural riverside ventilation and are equipped with fans to enjoy the fresh coastal breeze.",
   },
   {
     id: "f7",
     category: "Stay & Rooms",
-    question: "Do you offer interconnecting rooms for families?",
+    question: "Do you offer accommodation for families or groups?",
     answer:
-      "Currently, our Superior Suites can be configured as twin beds and may be booked adjacent to accommodate small families. For larger groups or families, we recommend booking multiple suites and contacting us directly so we can arrange the best configuration.",
+      "Yes, our 2BH accommodates up to 10 guests, and the Gulum cottages can be booked in clusters (8 cottages available) for group stays. We also have a spacious 15-guest Riverside Dormitory perfect for corporate and student groups.",
   },
   // Dining & Services
   {
@@ -102,7 +102,7 @@ export const faqs: FAQItem[] = [
     category: "Location & Travel",
     question: "Is there parking available at the resort?",
     answer:
-      "Yes, we offer complimentary secure parking for all guests. The parking area is monitored 24/7 and can accommodate both cars and motorcycles. Valet parking is also available for King Suite and Queen Suite guests.",
+      "Yes, we offer complimentary secure parking for all guests. The parking area is monitored 24/7 and can accommodate both cars and motorcycles. Valet parking is also available for guests staying in the 2BH and First Floor rooms.",
   },
   // Policies
   {
@@ -110,7 +110,7 @@ export const faqs: FAQItem[] = [
     category: "Policies",
     question: "Is Tropical Bay a pet-friendly resort?",
     answer:
-      "We are unfortunately unable to accommodate pets at this time in order to maintain a serene environment for all our guests. We appreciate your understanding and hope to welcome you — and the rest of your family — for a memorable stay.",
+      "Yes, we are proud to be a pet-friendly resort! We welcome your furry family members to join you during your riverside getaway. Please notify us during booking so we can arrange pet-friendly room configurations.",
   },
   {
     id: "f16",

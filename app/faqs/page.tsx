@@ -50,7 +50,7 @@ export default function FAQsPage() {
             </p>
           </div>
           <div className="faqs-contact-actions">
-            <a href={`tel:${siteConfig.phone}`} className="btn btn-secondary faqs-contact-btn">
+            <a href={`tel:${siteConfig.phones[0].tel}`} className="btn btn-secondary faqs-contact-btn">
               <Phone size={15} aria-hidden="true" />
               Call Us
             </a>

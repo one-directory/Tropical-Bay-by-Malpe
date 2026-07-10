@@ -5,9 +5,9 @@ import { X } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 
-type GalleryCategory = "All" | "Rooms" | "Dining" | "Pool" | "Beach" | "Exterior";
+type GalleryCategory = "All" | "Rooms" | "Dining" | "Riverside" | "Beach" | "Exterior";
 
-const categories: GalleryCategory[] = ["All", "Rooms", "Dining", "Pool", "Beach", "Exterior"];
+const categories: GalleryCategory[] = ["All", "Rooms", "Dining", "Riverside", "Beach", "Exterior"];
 
 interface GalleryItem {
   id: number;
@@ -19,18 +19,18 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, gradient: "linear-gradient(135deg, #0A2540 0%, #479694 100%)", category: "Rooms", label: "King Suite — Ocean View", tall: true },
-  { id: 2, gradient: "linear-gradient(135deg, #0A2540 0%, #16375a 100%)", category: "Pool", label: "Infinity Pool at Dusk" },
-  { id: 3, gradient: "linear-gradient(135deg, #C9A96E 0%, #A6803F 100%)", category: "Dining", label: "The Palm Table — Seafood Night" },
-  { id: 4, gradient: "linear-gradient(135deg, #2F6F6D 0%, #479694 100%)", category: "Beach", label: "Malpe Beach at Dawn", wide: true },
-  { id: 5, gradient: "linear-gradient(135deg, #103635 0%, #2F6F6D 100%)", category: "Exterior", label: "Resort Gardens" },
-  { id: 6, gradient: "linear-gradient(135deg, #06182b 0%, #0A2540 100%)", category: "Rooms", label: "Queen Suite — Balcony" },
-  { id: 7, gradient: "linear-gradient(135deg, #A6803F 0%, #C9A96E 100%)", category: "Dining", label: "Breakfast Spread", tall: true },
-  { id: 8, gradient: "linear-gradient(135deg, #0A2540 0%, #06182b 100%)", category: "Pool", label: "Poolside Cabana" },
-  { id: 9, gradient: "linear-gradient(135deg, #479694 0%, #2F6F6D 100%)", category: "Beach", label: "Sunset at Malpe" },
-  { id: 10, gradient: "linear-gradient(135deg, #0A2540 0%, #06182b 100%)", category: "Rooms", label: "Superior Suite — Interior" },
-  { id: 11, gradient: "linear-gradient(135deg, #C9A96E 0%, #103635 100%)", category: "Exterior", label: "Resort Facade — Night", wide: true },
-  { id: 12, gradient: "linear-gradient(135deg, #16375a 0%, #0A2540 100%)", category: "Dining", label: "Evening Dining" },
+  { id: 1, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #24373D 100%)", category: "Rooms", label: "First Floor — River View", tall: true },
+  { id: 2, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Riverside", label: "Riverside Deck at Dusk" },
+  { id: 3, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #C9A972 100%)", category: "Dining", label: "The Palm Table — Seafood Night" },
+  { id: 4, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #C9A972 100%)", category: "Beach", label: "Malpe Beach at Dawn", wide: true },
+  { id: 5, gradient: "linear-gradient(135deg, #24373D 0%, var(--color-primary) 100%)", category: "Exterior", label: "Resort Gardens" },
+  { id: 6, gradient: "linear-gradient(135deg, #0F1B1E 0%, var(--color-primary) 100%)", category: "Rooms", label: "Gulum Cottage — Porch" },
+  { id: 7, gradient: "linear-gradient(135deg, #C9A972 0%, var(--color-secondary) 100%)", category: "Dining", label: "Breakfast Spread", tall: true },
+  { id: 8, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Riverside", label: "Riverside Lounger" },
+  { id: 9, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #A9814B 100%)", category: "Beach", label: "Sunset at Malpe" },
+  { id: 10, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Rooms", label: "Small AC Room — Interior" },
+  { id: 11, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #24373D 100%)", category: "Exterior", label: "Resort Facade — Night", wide: true },
+  { id: 12, gradient: "linear-gradient(135deg, #24373D 0%, var(--color-primary) 100%)", category: "Dining", label: "Evening Dining" },
 ];
 
 export default function GalleryClient() {
@@ -151,14 +151,14 @@ export default function GalleryClient() {
         }
 
         .gallery-filter-btn:hover {
-          border-color: var(--color-ocean);
-          color: var(--color-ocean);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
         }
 
         .filter-active {
-          background: var(--color-navy);
-          border-color: var(--color-navy);
-          color: var(--color-white);
+          background: var(--color-primary);
+          border-color: var(--color-primary);
+          color: var(--color-background);
         }
 
         /* Masonry */

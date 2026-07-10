@@ -75,9 +75,12 @@ export default function BookingWidget() {
             className="booking-input booking-select"
           >
             <option value="any">Any Suite</option>
-            <option value="king-suite">King Suite</option>
-            <option value="queen-suite">Queen Suite</option>
-            <option value="superior-suite">Superior Suite</option>
+            <option value="small-ac">Small AC Room</option>
+            <option value="large-ac">Large AC Room</option>
+            <option value="first-floor">First Floor</option>
+            <option value="2bh">2BH</option>
+            <option value="gulum">Gulum Riverside Cottage</option>
+            <option value="dorm">Riverside Dormitory</option>
           </select>
         </div>
 
@@ -102,10 +105,10 @@ export default function BookingWidget() {
             </span>
             <button
               type="button"
-              onClick={() => setGuests((g) => Math.min(4, g + 1))}
+              onClick={() => setGuests((g) => Math.min(15, g + 1))}
               className="stepper-btn"
               aria-label="Increase guests"
-              disabled={guests >= 4}
+              disabled={guests >= 15}
             >
               +
             </button>
@@ -123,10 +126,10 @@ export default function BookingWidget() {
           display: flex;
           align-items: flex-end;
           gap: 0;
-          background: rgba(253, 246, 238, 0.97);
+          background: rgba(251, 248, 242, 0.97);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(201, 168, 76, 0.2);
+          border: 1px solid rgba(169, 129, 75, 0.2);
           border-radius: 4px;
           overflow: hidden;
           box-shadow: var(--shadow-elevated);
@@ -153,7 +156,7 @@ export default function BookingWidget() {
           font-weight: 600;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: var(--color-gold);
+          color: var(--color-secondary);
           margin-bottom: 0.5rem;
           cursor: pointer;
         }
@@ -166,7 +169,7 @@ export default function BookingWidget() {
           font-family: var(--font-sans);
           font-size: 0.9rem;
           font-weight: 500;
-          color: var(--color-navy);
+          color: var(--color-primary);
           padding: 0;
           cursor: pointer;
         }
@@ -205,8 +208,8 @@ export default function BookingWidget() {
         }
 
         .stepper-btn:hover:not(:disabled) {
-          border-color: var(--color-gold);
-          color: var(--color-gold);
+          border-color: var(--color-secondary);
+          color: var(--color-secondary);
         }
 
         .stepper-btn:disabled {
@@ -217,7 +220,7 @@ export default function BookingWidget() {
         .guests-count {
           font-size: 0.95rem;
           font-weight: 600;
-          color: var(--color-navy);
+          color: var(--color-primary);
           min-width: 1.5rem;
           text-align: center;
         }

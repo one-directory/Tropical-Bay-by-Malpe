@@ -102,24 +102,6 @@ export default function Hero() {
         </a>
       </section>
 
-      <section className="hero-features" aria-label="Resort highlights">
-        <div className="hero-features-inner container-resort">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className={`hero-feature ${index < features.length - 1 ? "hero-feature-divided" : ""}`}
-              >
-                <Icon size={28} strokeWidth={1.25} className="hero-feature-icon" aria-hidden="true" />
-                <h3 className="hero-feature-title">{feature.title}</h3>
-                <p className="hero-feature-desc">{feature.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
       <style>{`
         .hero {
           position: relative;
@@ -146,10 +128,10 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           background: linear-gradient(
-            90deg,
-            rgba(10, 20, 32, 0.72) 0%,
-            rgba(10, 20, 32, 0.45) 45%,
-            rgba(10, 20, 32, 0.25) 100%
+            135deg,
+            rgba(22, 38, 43, 0.82) 0%,
+            rgba(36, 55, 61, 0.5) 45%,
+            rgba(36, 80, 74, 0.3) 100%
           );
           z-index: 1;
         }
@@ -224,7 +206,7 @@ export default function Hero() {
           padding-top: 0.35rem;
         }
 
-        .hero-btn {
+         .hero-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -235,20 +217,21 @@ export default function Hero() {
           font-weight: 600;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          border-radius: 0;
+          border-radius: 4px;
           transition: transform 280ms ease, background 280ms ease, border-color 280ms ease;
         }
 
         .hero-btn-solid {
-          background: var(--color-gold);
-          color: var(--color-white);
-          border: 1px solid var(--color-gold);
+          background: var(--color-secondary);
+          color: var(--color-background);
+          border: 1px solid var(--color-secondary);
         }
 
         .hero-btn-solid:hover {
-          background: var(--color-gold-light);
-          border-color: var(--color-gold-light);
+          background: #C9A972;
+          border-color: #C9A972;
           transform: translateY(-1px);
+          box-shadow: 0 4px 16px rgba(169, 129, 75, 0.45);
         }
 
         .hero-btn-outline {
@@ -321,75 +304,11 @@ export default function Hero() {
           background: rgba(255, 255, 255, 0.45);
         }
 
-        .hero-features {
-          background: #f3f3f1;
-          border-top: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .hero-features-inner {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .hero-feature {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 0.65rem;
-          padding: 2.25rem 1.5rem;
-        }
-
-        .hero-feature-divided {
-          border-right: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .hero-feature-icon {
-          color: var(--color-gold);
-        }
-
-        .hero-feature-title {
-          margin: 0;
-          font-family: var(--font-sans);
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--color-navy);
-        }
-
-        .hero-feature-desc {
-          margin: 0;
-          max-width: 15rem;
-          font-family: var(--font-sans);
-          font-size: 0.82rem;
-          line-height: 1.65;
-          color: rgba(13, 27, 42, 0.58);
-        }
-
         .animate-hero-1 { animation: fadeUp 0.7s ease 0.1s both; }
         .animate-hero-2 { animation: fadeUp 0.8s ease 0.25s both; }
         .animate-hero-3 { animation: fadeUp 0.7s ease 0.4s both; }
         .animate-hero-4 { animation: fadeUp 0.7s ease 0.55s both; }
         .animate-hero-5 { animation: fadeIn 0.7s ease 1s both; }
-
-        @media (max-width: 960px) {
-          .hero-features-inner {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .hero-feature-divided {
-            border-right: none;
-          }
-
-          .hero-feature:nth-child(odd) {
-            border-right: 1px solid rgba(0, 0, 0, 0.08);
-          }
-
-          .hero-feature:nth-child(-n + 2) {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          }
-        }
 
         @media (max-width: 768px) {
           .hero-content {
@@ -403,18 +322,6 @@ export default function Hero() {
         }
 
         @media (max-width: 560px) {
-          .hero-features-inner {
-            grid-template-columns: 1fr;
-          }
-
-          .hero-feature:nth-child(odd) {
-            border-right: none;
-          }
-
-          .hero-feature:not(:last-child) {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          }
-
           .hero-ctas {
             width: 100%;
           }

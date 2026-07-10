@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2, User, Mail, Phone, MessageSquare } from "lucide-react";
+import { Send, CheckCircle2, User, Mail, Phone, MessageSquare, Bed } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
+import { rooms } from "@/lib/data/rooms";
+import { formatContactFormMessage, openWhatsAppMessage } from "@/lib/utils/whatsapp";
 
 interface FormData {
   name: string;
@@ -48,7 +50,8 @@ export default function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    openWhatsAppMessage(formatContactFormMessage(form));
+    await new Promise((r) => setTimeout(r, 800));
     setSubmitted(true);
     setLoading(false);
   };
@@ -59,9 +62,14 @@ export default function ContactForm() {
         <CheckCircle2 size={40} className="success-icon" aria-hidden="true" />
         <h3 className="success-title">Thank you, {form.name.split(" ")[0]}!</h3>
         <p className="success-desc">
-          Your message has been received. Our team will respond within 24 hours.
+          Your message has been sent via WhatsApp. Our team will respond within 24 hours.
           For urgent enquiries, please call us directly at{" "}
-          <a href={`tel:${siteConfig.phone}`} className="success-phone">{siteConfig.phone}</a>.
+          {siteConfig.phones.map((phone, i) => (
+            <span key={phone.tel}>
+              {i > 0 ? " or " : ""}
+              <a href={`tel:${phone.tel}`} className="success-phone">{phone.display}</a>
+            </span>
+          ))}.
         </p>
         <button
           className="btn btn-secondary"
@@ -153,32 +161,53 @@ export default function ContactForm() {
       </div>
 
       {form.subject === "reservation" && (
-        <div className="form-row">
-          <div className="form-field">
-            <label htmlFor="contact-checkin" className="form-label">Check-In Date</label>
-            <input
-              id="contact-checkin"
-              name="checkIn"
-              type="date"
-              value={form.checkIn}
-              onChange={handleChange}
-              className="form-input input-light"
-              min={new Date().toISOString().split("T")[0]}
-            />
+        <>
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="contact-checkin" className="form-label">Check-In Date</label>
+              <input
+                id="contact-checkin"
+                name="checkIn"
+                type="date"
+                value={form.checkIn}
+                onChange={handleChange}
+                className="form-input input-light"
+                min={new Date().toISOString().split("T")[0]}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="contact-checkout" className="form-label">Check-Out Date</label>
+              <input
+                id="contact-checkout"
+                name="checkOut"
+                type="date"
+                value={form.checkOut}
+                onChange={handleChange}
+                className="form-input input-light"
+                min={form.checkIn || new Date().toISOString().split("T")[0]}
+              />
+            </div>
           </div>
           <div className="form-field">
-            <label htmlFor="contact-checkout" className="form-label">Check-Out Date</label>
-            <input
-              id="contact-checkout"
-              name="checkOut"
-              type="date"
-              value={form.checkOut}
+            <label htmlFor="contact-roomtype" className="form-label">
+              <Bed size={13} aria-hidden="true" /> Room to Book
+            </label>
+            <select
+              id="contact-roomtype"
+              name="roomType"
+              value={form.roomType}
               onChange={handleChange}
-              className="form-input input-light"
-              min={form.checkIn || new Date().toISOString().split("T")[0]}
-            />
+              className="form-input input-light form-select"
+            >
+              <option value="any">Any Room (No Preference)</option>
+              {rooms.map((room) => (
+                <option key={room.id} value={room.id}>
+                  {room.name} — ₹{room.pricePerNight}/night
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
+        </>
       )}
 
       <div className={`form-field ${errors.message ? "field-error" : ""}`}>
@@ -257,8 +286,8 @@ export default function ContactForm() {
 
         .form-input:focus {
           outline: none;
-          border-color: var(--color-ocean);
-          box-shadow: 0 0 0 3px rgba(26, 107, 138, 0.08);
+          border-color: var(--color-accent);
+          box-shadow: 0 0 0 3px rgba(47, 111, 109, 0.1);
         }
 
         .form-input::placeholder { color: rgba(13, 27, 42, 0.35); }
@@ -303,8 +332,8 @@ export default function ContactForm() {
           align-items: flex-start;
           gap: 1.25rem;
           padding: 2.5rem;
-          background: rgba(45, 106, 79, 0.05);
-          border: 1px solid rgba(45, 106, 79, 0.2);
+          background: rgba(47, 111, 109, 0.05);
+          border: 1px solid rgba(47, 111, 109, 0.2);
           border-radius: 4px;
         }
 
@@ -324,7 +353,7 @@ export default function ContactForm() {
           margin: 0;
         }
 
-        .success-phone { color: var(--color-ocean); font-weight: 500; }
+        .success-phone { color: var(--color-accent); font-weight: 500; }
       `}</style>
     </form>
   );

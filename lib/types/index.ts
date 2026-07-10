@@ -42,6 +42,7 @@ export interface Testimonial {
   date: string;
   avatar: string;
   stayType: string;
+  platform?: "booking" | "google" | "agoda";
 }
 
 export interface Experience {

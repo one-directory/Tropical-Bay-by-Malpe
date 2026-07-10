@@ -26,11 +26,11 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-  restaurant: "linear-gradient(135deg, #A6803F 0%, #C9A96E 100%)",
-  "hidden-gem": "linear-gradient(135deg, #2F6F6D 0%, #479694 100%)",
-  photography: "linear-gradient(135deg, #0A2540 0%, #16375a 100%)",
-  shopping: "linear-gradient(135deg, #C9A96E 0%, #F5F1E8 100%)",
-  "local-food": "linear-gradient(135deg, #103635 0%, #2F6F6D 100%)",
+  restaurant: "linear-gradient(135deg, #b09257 0%, var(--color-secondary) 100%)",
+  "hidden-gem": "linear-gradient(135deg, var(--color-accent) 0%, #4d9386 100%)",
+  photography: "linear-gradient(135deg, var(--color-primary) 0%, #28506A 100%)",
+  shopping: "linear-gradient(135deg, var(--color-secondary) 0%, var(--color-background) 100%)",
+  "local-food": "linear-gradient(135deg, #2c5c53 0%, var(--color-accent) 100%)",
 };
 
 const filters = ["All", "restaurant", "hidden-gem", "photography", "shopping", "local-food"];

@@ -126,8 +126,8 @@ export default function FAQsClient() {
         }
 
         .faq-filter-btn:hover {
-          border-color: var(--color-ocean);
-          color: var(--color-ocean);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
         }
 
         .filter-active {
@@ -153,7 +153,7 @@ export default function FAQsClient() {
         }
 
         .faq-item:has(.faq-trigger-open) {
-          border-color: rgba(26, 107, 138, 0.2);
+          border-color: rgba(47, 111, 109, 0.25);
           box-shadow: var(--shadow-card);
         }
 
@@ -175,7 +175,7 @@ export default function FAQsClient() {
         }
 
         .faq-trigger-open {
-          background: rgba(26, 107, 138, 0.03);
+          background: rgba(47, 111, 109, 0.03);
         }
 
         .faq-trigger-left {
@@ -209,7 +209,7 @@ export default function FAQsClient() {
 
         .faq-chevron-open {
           transform: rotate(180deg);
-          color: var(--color-ocean);
+          color: var(--color-accent);
         }
 
         .faq-answer {

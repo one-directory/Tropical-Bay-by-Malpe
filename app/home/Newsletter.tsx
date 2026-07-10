@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
+import { formatNewsletterMessage, openWhatsAppMessage } from "@/lib/utils/whatsapp";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ export default function Newsletter() {
     e.preventDefault();
     if (!email.trim()) return;
     setLoading(true);
-    // Simulate API call
+    openWhatsAppMessage(formatNewsletterMessage(email.trim()));
     await new Promise((r) => setTimeout(r, 800));
     setSubmitted(true);
     setLoading(false);
@@ -114,7 +115,7 @@ export default function Newsletter() {
         .newsletter-overline { color: var(--color-gold); }
 
         .newsletter-title {
-          color: var(--color-navy);
+          color: var(--color-primary);
           margin: 0;
         }
 
@@ -157,7 +158,7 @@ export default function Newsletter() {
 
         .newsletter-input:focus {
           outline: none;
-          border-color: var(--color-ocean);
+          border-color: var(--color-secondary);
         }
 
         .newsletter-btn {
@@ -196,16 +197,16 @@ export default function Newsletter() {
           align-items: center;
           gap: 1.25rem;
           padding: 1.75rem 2rem;
-          background: rgba(45, 106, 79, 0.06);
-          border: 1px solid rgba(45, 106, 79, 0.2);
+          background: rgba(169, 129, 75, 0.06);
+          border: 1px solid rgba(169, 129, 75, 0.2);
           border-radius: 4px;
           max-width: 540px;
           width: 100%;
           text-align: left;
         }
 
-        .success-icon { color: var(--color-palm); flex-shrink: 0; }
-        .success-title { font-weight: 600; color: var(--color-navy); margin-bottom: 0.25rem; }
+        .success-icon { color: var(--color-secondary); flex-shrink: 0; }
+        .success-title { font-weight: 600; color: var(--color-primary); margin-bottom: 0.25rem; }
         .success-desc { font-size: 0.875rem; color: rgba(13, 27, 42, 0.6); }
 
         .sr-only {

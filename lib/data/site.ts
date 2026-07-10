@@ -2,50 +2,40 @@ import type { NavItem } from "@/lib/types";
 
 export const navItems: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
   {
     label: "Rooms & Suites",
     href: "/rooms",
     children: [
       {
-        label: "King Suite",
-        href: "/king-suite",
-        description: "Our flagship ocean-view suite",
+        label: "Small AC Room",
+        href: "/rooms/small-ac",
+        description: "Cozy riverside comfort",
       },
       {
-        label: "Queen Suite",
-        href: "/queen-suite",
-        description: "Elegant garden & sea views",
+        label: "Large AC Room",
+        href: "/rooms/large-ac",
+        description: "Spacious layout with forest views",
       },
       {
-        label: "Superior Suite",
-        href: "/superior-suite",
-        description: "Refined comfort & coastal style",
-      },
-    ],
-  },
-  {
-    label: "About Us",
-    href: "/about",
-    children: [
-      {
-        label: "Our Services",
-        href: "/services",
-        description: "Premium amenities & services",
+        label: "First Floor",
+        href: "/rooms/first-floor",
+        description: "Elevated panoramic river views",
       },
       {
-        label: "Our Gallery",
-        href: "/gallery",
-        description: "Explore the resort through imagery",
+        label: "2BH",
+        href: "/rooms/2bh",
+        description: "Private two-bedroom riverside villa",
       },
       {
-        label: "Pricing",
-        href: "/pricing",
-        description: "Rates & seasonal offers",
+        label: "Gulum Riverside Cottage",
+        href: "/rooms/gulum",
+        description: "Traditional stone heritage architecture",
       },
       {
-        label: "FAQs",
-        href: "/faqs",
-        description: "Answers to common questions",
+        label: "Riverside Dormitory",
+        href: "/rooms/dorm",
+        description: "Social bunk lodging for groups",
       },
     ],
   },
@@ -56,17 +46,17 @@ export const navItems: NavItem[] = [
       {
         label: "Around Us",
         href: "/around-us",
-        description: "Discover Malpe & the coast",
+        description: "Explore beaches, heritage & nature",
       },
       {
-        label: "Attractions",
-        href: "/attractions",
-        description: "Must-see local highlights",
+        label: "Culture",
+        href: "/culture",
+        description: "Sacred rituals & traditional arts",
       },
       {
-        label: "Explore",
-        href: "/explore",
-        description: "Curated coastal adventures",
+        label: "Udupi Cuisine",
+        href: "/cuisine",
+        description: "Birthplace of legendary coastal flavours",
       },
     ],
   },
@@ -80,28 +70,33 @@ export const siteConfig = {
     "Experience the finest beachfront luxury on Karnataka's Malpe Coast. Tropical Bay offers bespoke suites, world-class dining, and immersive coastal experiences at the edge of the Arabian Sea.",
   url: "https://tropicalbaybymalpie.com",
   email: "hello@tropicalbaymalpe.com",
-  phone: "+91 98440 12345",
-  whatsapp: "+919844012345",
+  phones: [
+    { display: "+91 90354 30365", tel: "+919035430365" },
+    { display: "+91 73491 30365", tel: "+917349130365", whatsapp: true },
+  ],
+  whatsappMessage:
+    "Hello! I'm interested in booking a stay at Tropical Bay by Malpe. Could you please share availability and rates?",
   address: {
-    line1: "Survey No. 42, Darbe Road",
-    line2: "Near St. Mary's Island Ferry Point",
-    city: "Malpe",
+    line1: "Pithrody Beach Access Rd, Pithrody",
+    line2: "Udyavara, Udupi",
+    city: "Udupi",
     state: "Karnataka",
-    pin: "576108",
+    pin: "574118",
     country: "India",
   },
   socialLinks: {
-    instagram: "https://instagram.com/tropicalbaybymalpie",
-    facebook: "https://facebook.com/tropicalbaybymalpie",
-    youtube: "https://youtube.com/@tropicalbaybymalpie",
+    instagram: "https://instagram.com/tropicalbaybymalpe",
+    facebook: "https://facebook.com/tropicalbaybymalpe",
+    youtube: "https://youtube.com/@tropicalbaybymalpe",
     twitter: "https://x.com/tropicalbaymlpe",
   },
-  hours: [
-    { day: "Front Desk", time: "Open 24 hours" },
-    { day: "Restaurant", time: "7:00 AM – 11:00 PM" },
-    { day: "Pool", time: "6:00 AM – 10:00 PM" },
-    { day: "Concierge", time: "6:00 AM – 10:00 PM" },
-  ],
   mapEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.1!2d74.7101!3d13.3584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMalpe+Beach!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.5591721719265!2d74.72144346131034!3d13.299992383933297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbcbb02100caa45%3A0x9a891aa53c48fb82!2sTropical%20Bay%20-%20Udupi!5e0!3m2!1sen!2sin!4v1782990172561!5m2!1sen!2sin",
 } as const;
+
+export function getWhatsAppHref(message: string = siteConfig.whatsappMessage) {
+  const phone = siteConfig.phones.find((p) => "whatsapp" in p && p.whatsapp);
+  if (!phone) return "#";
+  const digits = phone.tel.replace(/\D/g, "");
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+}

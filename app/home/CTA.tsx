@@ -4,7 +4,7 @@ import FadeIn from "@/components/animations/FadeIn";
 
 export default function CTA() {
   return (
-    <section className="cta-section" aria-labelledby="cta-heading">
+    <section className="cta-section section-padding-lg" aria-labelledby="cta-heading">
       <div className="cta-bg" aria-hidden="true">
         <div className="cta-visual" />
       </div>

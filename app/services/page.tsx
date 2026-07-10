@@ -12,7 +12,7 @@ import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Our Services",
-  description: "Premium resort services at Tropical Bay by Malpe — airport transfers, beachfront dining, infinity pool, 24-hour room service, travel concierge, event spaces, and more.",
+  description: "Premium resort services at Tropical Bay by Malpe — airport transfers, beachfront dining, private kitchens & barbecue, 24-hour room service, travel concierge, event spaces, and more.",
   alternates: { canonical: `${siteConfig.url}/services` },
   openGraph: {
     title: "Our Services | Tropical Bay by Malpe",

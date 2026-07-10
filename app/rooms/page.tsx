@@ -8,11 +8,11 @@ import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Rooms & Suites",
-  description: "Explore our three handcrafted suites at Tropical Bay by Malpe — King, Queen, and Superior Suite. Each offers a unique blend of coastal luxury and personal comfort.",
+  description: "Explore our six handcrafted riverside accommodations at Tropical Bay — including cozy AC rooms, private villas, heritage stone cottages, and group dormitories near Udupi.",
   alternates: { canonical: `${siteConfig.url}/rooms` },
   openGraph: {
-    title: "Rooms & Suites | Tropical Bay by Malpe",
-    description: "Three curated suites on the shores of Malpe Beach, Karnataka.",
+    title: "Rooms & Suites | Tropical Bay",
+    description: "Six curated nature-inspired spaces on the riverbanks of Malpe, Udupi.",
     url: `${siteConfig.url}/rooms`,
   },
 };
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
-  name: "Tropical Bay by Malpe",
+  name: "Tropical Bay Udupi",
   url: siteConfig.url,
   containsPlace: rooms.map((r) => ({
     "@type": "HotelRoom",
@@ -47,8 +47,8 @@ export default function RoomsPage() {
           <span className="text-overline page-hero-overline">Accommodation</span>
           <h1 className="text-h1 page-hero-title">Suites & Accommodation</h1>
           <p className="page-hero-desc">
-            Three distinct sanctuaries, each shaped by the character of the Malpe coast.
-            Choose the suite that speaks to your sense of escape.
+            Six distinct sanctuaries, each shaped by the quiet character of the river.
+            Choose the space that speaks to your sense of escape.
           </p>
         </FadeIn>
       </section>
@@ -60,7 +60,7 @@ export default function RoomsPage() {
             <SectionHeading
               overline="Our Collection"
               title="Choose Your Sanctuary"
-              subtitle="From panoramic ocean suites to intimate garden retreats, every room at Tropical Bay is a world unto itself — crafted with care and rooted in the spirit of coastal Karnataka."
+              subtitle="From panoramic river balconies to traditional stone cottages and social social group dorms, every room at Tropical Bay is crafted to connect you with nature."
               id="all-rooms-heading"
             />
           </FadeIn>

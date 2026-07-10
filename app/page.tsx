@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/app/home/Hero";
 import Welcome from "@/app/home/Welcome";
+
 import FeaturedRooms from "@/app/home/FeaturedRooms";
 import Amenities from "@/app/home/Amenities";
-import Experiences from "@/app/home/Experiences";
+import NearbyPlaces from "@/app/home/NearbyPlaces";
 import GalleryPreview from "@/app/home/GalleryPreview";
 import Testimonials from "@/app/home/Testimonials";
-import CTA from "@/app/home/CTA";
-import Newsletter from "@/app/home/Newsletter";
+import BookingCTA from "@/app/home/BookingCTA";
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -25,11 +25,10 @@ export default function HomePage() {
       <Welcome />
       <FeaturedRooms />
       <Amenities />
-      <Experiences />
       <GalleryPreview />
+      <NearbyPlaces />
       <Testimonials />
-      <CTA />
-      <Newsletter />
+      <BookingCTA />
     </>
   );
 }

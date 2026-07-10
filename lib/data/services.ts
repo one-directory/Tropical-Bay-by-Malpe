@@ -30,17 +30,17 @@ export const services: Service[] = [
     ],
   },
   {
-    id: "swimming-pool",
-    title: "Infinity Swimming Pool",
+    id: "kitchen-bbq",
+    title: "Riverside Kitchen & BBQ",
     description:
-      "Our stunning infinity pool appears to merge seamlessly with the horizon of the Arabian Sea. Surrounded by swaying palms and lounging areas, it is the resort's most beloved social and relaxation space.",
-    icon: "Waves",
+      "Every suite is designed for self-catering comfort, featuring fully-equipped kitchens or kitchenettes. Take your cooking outdoors with access to shared barbecue grills and al fresco dining tables by the riverbank.",
+    icon: "UtensilsCrossed",
     features: [
-      "Oceanfront infinity pool",
-      "Heated in winter months",
-      "Poolside bar service",
-      "Cabana rentals",
-      "Children's wading section",
+      "Fully-equipped private kitchens",
+      "Shared barbecue facilities",
+      "Outdoor dining tables",
+      "Refrigerators & kitchenware",
+      "Scenic riverside al fresco setups",
     ],
   },
   {

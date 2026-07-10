@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { attractions } from "@/lib/data/experiences";
+import { Suspense } from "react";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
-import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
-import { MapPin, Clock, Tag } from "lucide-react";
+import AroundUsClient from "@/app/around-us/AroundUsClient";
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -17,111 +17,116 @@ export const metadata: Metadata = {
   },
 };
 
-const categoryColors: Record<string, string> = {
-  Beach: "linear-gradient(135deg, #0A2540 0%, #2F6F6D 100%)",
-  Island: "linear-gradient(135deg, #0A2540 0%, #16375a 100%)",
-  Activity: "linear-gradient(135deg, #2F6F6D 0%, #479694 100%)",
-  Cultural: "linear-gradient(135deg, #C9A96E 0%, #A6803F 100%)",
-  Heritage: "linear-gradient(135deg, #A6803F 0%, #C9A96E 100%)",
-  Temple: "linear-gradient(135deg, #103635 0%, #2F6F6D 100%)",
-};
-
 export default function AroundUsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="page-hero around-hero">
-        <div className="page-hero-overlay" aria-hidden="true" />
-        <FadeIn className="container-resort page-hero-content">
+      <section className="around-hero" aria-label="The World Around Tropical Bay Gallery Banner">
+        <div className="around-hero-image-wrapper">
+          <Image
+            src="/images/around us main.webp"
+            alt="The World Around Tropical Bay Showcase"
+            fill
+            priority
+            sizes="100vw"
+            className="around-hero-image"
+          />
+        </div>
+        <div className="around-hero-overlay" aria-hidden="true" />
+
+        <FadeIn className="container-resort around-hero-content">
           <span className="text-overline page-hero-overline">Explore the Neighbourhood</span>
           <h1 className="text-h1 page-hero-title">The World Around Tropical Bay</h1>
           <p className="page-hero-desc">
-            Beyond our gates lies one of India's most compelling coastal destinations.
-            From the famous sands of Malpe Beach to the ancient temples of the Tulu Nadu
-            hinterland — adventure is always close.
+            Beyond our gates lies one of India's most compelling coastal destinations. From the famous sands of Malpe Beach to the ancient temples of the Tulu Nadu hinterland — adventure is always close.
           </p>
         </FadeIn>
       </section>
 
       {/* Attractions */}
-      <section className="section-padding-lg bg-off-white" aria-labelledby="around-heading">
+      <section className="section-padding-lg bg-off-white around-listings" aria-label="Attractions listings">
         <div className="container-resort">
-          <FadeIn>
-            <SectionHeading
-              overline="Nearby Places"
-              title="What Awaits You"
-              subtitle="Every destination below is within easy reach of the resort. Our concierge team can arrange transport, guided visits, and activity bookings for all of them."
-              id="around-heading"
-            />
-          </FadeIn>
-
-          <StaggerContainer className="around-grid">
-            {attractions.map((place) => (
-              <StaggerItem key={place.id}>
-                <article className="around-card card-resort" aria-label={place.name}>
-                  <div
-                    className="around-visual"
-                    style={{ background: categoryColors[place.category] ?? categoryColors.Beach }}
-                    aria-hidden="true"
-                  >
-                    <span className="around-category-tag">{place.category}</span>
-                    <div className="around-travel-badge">
-                      <MapPin size={11} aria-hidden="true" />
-                      {place.distance}
-                      <span className="travel-sep" aria-hidden="true">·</span>
-                      <Clock size={11} aria-hidden="true" />
-                      {place.travelTime}
-                    </div>
-                  </div>
-
-                  <div className="around-body">
-                    <h2 className="around-name">{place.name}</h2>
-                    <p className="around-desc">{place.description}</p>
-
-                    <ul className="around-highlights" aria-label={`Highlights of ${place.name}`}>
-                      {place.highlights.map((h) => (
-                        <li key={h} className="around-highlight">
-                          <Tag size={10} aria-hidden="true" />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <Suspense fallback={<div>Loading neighbourhood...</div>}>
+            <AroundUsClient />
+          </Suspense>
         </div>
       </section>
 
-      {/* Map Embed */}
-      <section className="section-padding bg-cream" aria-labelledby="map-heading">
-        <div className="container-resort">
-          <FadeIn>
-            <SectionHeading
-              overline="Find Us"
-              title="We're Right Here"
-              subtitle="Tropical Bay by Malpe is located near the St. Mary's Island Ferry Point, just minutes from Malpe Beach."
-              id="map-heading"
-            />
-          </FadeIn>
-          <FadeIn delay={0.2} className="map-wrapper">
-            <iframe
-              src={siteConfig.mapEmbedUrl}
-              width="100%"
-              height="480"
-              style={{ border: 0, borderRadius: "4px" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Tropical Bay by Malpe — Map Location"
-              aria-label="Google Maps showing Tropical Bay by Malpe location"
-            />
-          </FadeIn>
-        </div>
-      </section>
 
-      
+      <style>{`
+        /* Responsive Hero with aspect-ratio showcase */
+        .around-hero {
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          background: var(--color-primary);
+          min-height: 75vh;
+          padding-top: 8rem;
+          padding-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+          .around-hero {
+            min-height: auto;
+            aspect-ratio: 2816 / 1536; /* Set matching aspect-ratio size as cuisine hero */
+            padding-top: 6rem;
+            padding-bottom: 3rem;
+          }
+        }
+
+        .around-hero-image-wrapper {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .around-hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .around-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: 
+            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.015) 1px, transparent 0),
+            linear-gradient(to bottom, rgba(22, 38, 43, 0.75) 0%, rgba(22, 38, 43, 0.5) 50%, rgba(22, 38, 43, 0.85) 100%);
+          background-size: 36px 36px, 100% 100%;
+          z-index: 2;
+        }
+
+        .around-hero .around-hero-content {
+          position: relative !important;
+          z-index: 5 !important;
+          max-width: 720px;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+
+        .around-hero .page-hero-overline {
+          color: #F0D290 !important;
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+          font-weight: 600;
+        }
+
+        .around-hero .page-hero-title {
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .around-hero .page-hero-desc {
+          color: rgba(255, 255, 255, 0.85) !important;
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .around-listings {
+          padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+        }
+      `}</style>
     </>
   );
 }

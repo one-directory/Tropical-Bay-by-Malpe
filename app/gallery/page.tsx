@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Explore the photo gallery of Tropical Bay by Malpe — rooms, dining, pool, beach, and resort imagery from Karnataka's premier boutique beachfront resort.",
+  description: "Explore the photo gallery of Tropical Bay by Malpe — rooms, dining, riverside deck, beach, and resort imagery from Karnataka's premier boutique beachfront resort.",
   alternates: { canonical: `${siteConfig.url}/gallery` },
   openGraph: {
     title: "Gallery | Tropical Bay by Malpe",

@@ -63,13 +63,13 @@ export const experiences: Experience[] = [
   },
   {
     id: "relaxation",
-    title: "Poolside Relaxation",
+    title: "Riverside Relaxation",
     description:
-      "Surrender to tranquility at our infinity pool. With the Arabian Sea as your backdrop, a cold drink in hand, and the warm Malpe sun overhead, this is the ultimate definition of a resort day done right.",
+      "Surrender to tranquility at our riverside deck. With the calm backwaters as your backdrop, a cold drink in hand, and the warm Malpe sun overhead, this is the ultimate definition of a resort day done right.",
     duration: "As long as you wish",
     difficulty: "Easy",
     image: "/images/experiences/relaxation.jpg",
-    tags: ["Wellness", "Pool", "Leisure"],
+    tags: ["Wellness", "Riverside", "Leisure"],
   },
   {
     id: "photography",

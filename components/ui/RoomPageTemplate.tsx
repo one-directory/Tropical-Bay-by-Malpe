@@ -1,15 +1,12 @@
 import type { Room } from "@/lib/types";
 import ImageSlider from "@/components/ui/ImageSlider";
 import RoomCard from "@/components/ui/RoomCard";
-import BookingWidget from "@/components/ui/BookingWidget";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
 import {
-  Maximize2, BedDouble, Users, Eye, Check, Star,
-  ArrowRight,
+  Maximize2, BedDouble, Users, Check, Star,
 } from "lucide-react";
-import Link from "next/link";
 
 interface RoomPageTemplateProps {
   room: Room;
@@ -33,9 +30,8 @@ export default function RoomPageTemplate({ room, relatedRooms }: RoomPageTemplat
       </section>
 
       {/* Room Detail */}
-      <section className="section-padding-lg bg-off-white" aria-labelledby="room-detail-heading">
+      <section className="room-detail-section bg-off-white" aria-labelledby="room-detail-heading">
         <div className="container-resort room-detail-grid">
-          {/* Left Content */}
           <div className="room-detail-left">
             <FadeIn>
               <div className="room-specs-bar">
@@ -53,11 +49,7 @@ export default function RoomPageTemplate({ room, relatedRooms }: RoomPageTemplat
                   <Users size={14} aria-hidden="true" />
                   <span>Up to {room.occupancy} guests</span>
                 </div>
-                <div className="room-spec-sep" aria-hidden="true" />
-                <div className="room-spec-item">
-                  <Eye size={14} aria-hidden="true" />
-                  <span>{room.view}</span>
-                </div>
+
               </div>
             </FadeIn>
 
@@ -112,44 +104,6 @@ export default function RoomPageTemplate({ room, relatedRooms }: RoomPageTemplat
               </div>
             </FadeIn>
           </div>
-
-          {/* Right: Booking Sidebar */}
-          <aside className="room-booking-sidebar" aria-label="Booking options">
-            <FadeIn delay={0.3}>
-              <div className="booking-sidebar-card">
-                <div className="booking-price">
-                  <div>
-                    <span className="price-from text-overline">From</span>
-                    <p className="price-value">
-                      ₹{room.pricePerNight.toLocaleString("en-IN")}
-                      <span className="price-per"> / night</span>
-                    </p>
-                    <p className="price-weekend">
-                      Weekends from ₹{room.weekendPrice.toLocaleString("en-IN")}
-                    </p>
-                  </div>
-                </div>
-                <div className="booking-sidebar-widget">
-                  <BookingWidget />
-                </div>
-                <div className="booking-includes">
-                  <p className="booking-includes-title text-overline">Rate Includes</p>
-                  <ul>
-                    {["Complimentary breakfast for 2", "Resort Wi-Fi", "Beach access & equipment", "Infinity pool access"].map((inc) => (
-                      <li key={inc} className="booking-include-item">
-                        <Check size={12} aria-hidden="true" />
-                        {inc}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Link href="/contact" className="btn btn-secondary booking-contact-btn">
-                  Request a Reservation
-                  <ArrowRight size={14} aria-hidden="true" />
-                </Link>
-              </div>
-            </FadeIn>
-          </aside>
         </div>
       </section>
 
