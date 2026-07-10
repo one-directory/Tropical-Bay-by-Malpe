@@ -70,6 +70,12 @@ export default function AroundUsPage() {
           padding-bottom: 4rem;
         }
 
+        @media (max-width: 767px) {
+          .around-hero {
+            min-height: 55vh;
+          }
+        }
+
         @media (min-width: 768px) {
           .around-hero {
             min-height: auto;

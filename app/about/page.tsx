@@ -183,6 +183,12 @@ export default function AboutPage() {
           padding-bottom: 4rem;
         }
 
+        @media (max-width: 767px) {
+          .about-hero {
+            min-height: 55vh;
+          }
+        }
+
         @media (min-width: 768px) {
           .about-hero {
             min-height: auto;

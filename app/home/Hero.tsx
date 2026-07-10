@@ -311,6 +311,9 @@ export default function Hero() {
         .animate-hero-5 { animation: fadeIn 0.7s ease 1s both; }
 
         @media (max-width: 768px) {
+          .hero {
+            min-height: 85svh;
+          }
           .hero-content {
             padding-top: 6rem;
             padding-bottom: 5.5rem;

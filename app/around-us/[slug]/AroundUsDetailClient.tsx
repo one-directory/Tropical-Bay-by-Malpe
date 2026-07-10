@@ -1950,10 +1950,16 @@ export default function AroundUsDetailClient({ place }: AroundUsDetailClientProp
 
       <style jsx>{`
         .detail-nav-header {
-          margin-top: 4.5rem;
+          margin-top: 5.5rem;
           background: transparent;
           padding: 1.5rem 0 0.5rem 0;
           border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+          .detail-nav-header {
+            margin-top: 6.5rem;
+          }
         }
 
         .btn-back-hub {

@@ -116,6 +116,12 @@ export default function CulturePage() {
           padding-bottom: 4rem;
         }
 
+        @media (max-width: 767px) {
+          .culture-hero {
+            min-height: 55vh;
+          }
+        }
+
         @media (min-width: 768px) {
           .culture-hero {
             min-height: auto;

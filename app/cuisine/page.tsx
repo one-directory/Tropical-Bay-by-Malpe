@@ -127,6 +127,12 @@ export default function CuisinePage() {
           padding-bottom: 4rem;
         }
 
+        @media (max-width: 767px) {
+          .cuisine-hero {
+            min-height: 55vh;
+          }
+        }
+
         @media (min-width: 768px) {
           .cuisine-hero {
             min-height: auto;
