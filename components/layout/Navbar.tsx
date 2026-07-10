@@ -744,6 +744,14 @@ export default function Navbar() {
           .navbar-logo-sub { letter-spacing: 0.22em; }
         }
 
+        @media (max-width: 380px) {
+          .navbar-bar { padding: 0 1rem; }
+          .navbar-inner { min-height: 4rem; }
+          .navbar-logo-img { height: 4.5rem; }
+          .navbar-scrolled .navbar-logo-img { height: 3.75rem; }
+          .navbar-book { padding: 0.6rem 1rem; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .navbar, .navbar-bar, .navbar-inner, .navbar-link, .navbar-book,
           .mobile-nav, .mobile-nav-item, .mobile-nav-sub, .nav-dropdown-menu {

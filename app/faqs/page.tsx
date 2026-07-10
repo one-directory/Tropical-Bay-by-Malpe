@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+export const dynamic = 'force-dynamic';
 import FAQsClient from "./FAQsClient";
 import FadeIn from "@/components/animations/FadeIn";
 import Link from "next/link";

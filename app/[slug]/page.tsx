@@ -5,6 +5,8 @@ import RoomPageTemplate from "@/components/ui/RoomPageTemplate";
 import { siteConfig } from "@/lib/data/site";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ slug: string }>;
 }

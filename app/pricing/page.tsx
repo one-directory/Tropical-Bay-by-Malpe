@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+export const dynamic = 'force-dynamic';
 import { pricingPlans } from "@/lib/data/pricing";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";

@@ -330,6 +330,18 @@ export default function Hero() {
             flex: 1 1 100%;
           }
         }
+
+        @media (max-width: 400px) {
+          .hero-content {
+            padding-top: 5rem;
+            padding-bottom: 4.5rem;
+          }
+
+          .hero-btn {
+            min-width: unset;
+            padding: 0.85rem 1.25rem;
+          }
+        }
       `}</style>
     </>
   );

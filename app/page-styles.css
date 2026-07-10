@@ -14,6 +14,20 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero {
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
 .page-hero::before {
   content: '';
   position: absolute;
@@ -773,6 +787,12 @@
   box-shadow: var(--shadow-elevated);
 }
 
+@media (max-width: 768px) {
+  .featured-visual {
+    height: clamp(220px, 55vw, 360px);
+  }
+}
+
 .featured-gradient {
   width: 100%;
   height: 100%;
@@ -1265,6 +1285,12 @@
   box-shadow: var(--shadow-luxury);
 }
 
+@media (max-width: 480px) {
+  .mvv-card {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
 .mvv-mission {
   background: var(--color-white);
   border-top: 3px solid var(--color-secondary);
@@ -1472,6 +1498,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .team-card {
   background: var(--color-white);
   border: 1px solid rgba(30, 41, 59, 0.06);
@@ -1534,6 +1566,15 @@
   gap: 2rem;
   flex-wrap: wrap;
   box-shadow: var(--shadow-luxury);
+}
+
+@media (max-width: 640px) {
+  .about-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem;
+    gap: 1.25rem;
+  }
 }
 
 .about-cta-text {

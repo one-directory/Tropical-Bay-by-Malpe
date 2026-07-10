@@ -4,17 +4,10 @@ import { aroundUsPlaces } from "@/lib/data/aroundUs";
 import { siteConfig } from "@/lib/data/site";
 import AroundUsDetailClient from "./AroundUsDetailClient";
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  const allowedCategories = ["Beach", "Heritage", "Spirituality", "Nature", "Culture"];
-  return aroundUsPlaces
-    .filter((p) => allowedCategories.includes(p.category))
-    .map((place) => ({
-      slug: place.id,
-    }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
