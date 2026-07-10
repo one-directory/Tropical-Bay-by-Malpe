@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { testimonials } from "@/lib/data/testimonials";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
@@ -12,6 +12,14 @@ export default function Testimonials() {
 
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
+
+  // Auto-play interval that resets if current or total changes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % total);
+    }, 6000); // changes every 6 seconds
+    return () => clearInterval(timer);
+  }, [current, total]);
 
   const getVisible = () => {
     return [
@@ -39,7 +47,11 @@ export default function Testimonials() {
         <div className="testimonials-carousel" role="region" aria-label="Guest testimonials">
           <div className="testimonials-grid">
             {visible.map((t, i) => (
-              <FadeIn key={t.id} delay={i * 0.1}>
+              <FadeIn 
+                key={t.id} 
+                delay={i * 0.1}
+                className={i !== 1 ? "testimonial-secondary-wrapper" : ""}
+              >
                 <article
                   className={`testimonial-card ${i === 1 ? "testimonial-featured" : "testimonial-secondary"}`}
                   aria-label={`Review by ${t.name}`}
@@ -166,8 +178,9 @@ export default function Testimonials() {
             grid-template-columns: 1fr;
           }
 
-          .testimonial-secondary {
-            display: none;
+          .testimonial-secondary,
+          .testimonial-secondary-wrapper {
+            display: none !important;
           }
         }
 
