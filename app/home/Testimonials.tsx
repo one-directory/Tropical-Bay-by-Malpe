@@ -17,7 +17,7 @@ export default function Testimonials() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % total);
-    }, 6000); // changes every 6 seconds
+    }, 4000); // changes every 4 seconds
     return () => clearInterval(timer);
   }, [current, total]);
 
