@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Bed, Sun, UtensilsCrossed, BellRing } from "lucide-react";
 
@@ -83,12 +82,12 @@ export default function Hero() {
             </p>
 
             <div className="hero-ctas animate-hero-4">
-              <Link href="/rooms" className="hero-btn hero-btn-solid">
+              <a href="/rooms" className="hero-btn hero-btn-solid">
                 Explore Rooms
-              </Link>
-              <Link href="/contact" className="hero-btn hero-btn-outline">
+              </a>
+              <a href="/contact" className="hero-btn hero-btn-outline">
                 Book Now
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -312,15 +311,48 @@ export default function Hero() {
 
         @media (max-width: 768px) {
           .hero {
-            min-height: 85svh;
+            min-height: 100svh;
+            align-items: flex-end;
           }
+
+          .hero-bg {
+            inset: 0;
+          }
+
+          .hero-bg-image {
+            object-position: 65% center !important;
+          }
+
           .hero-content {
-            padding-top: 6rem;
-            padding-bottom: 5.5rem;
+            padding-top: 5.5rem;
+            padding-bottom: 12svh; /* Move up by approx 10-15% of viewport height */
+          }
+
+          .hero-text {
+            gap: 1.1rem; /* comfortable spacing */
+          }
+
+          .hero-description {
+            max-width: 380px; /* prevent long lines and improve readability */
+          }
+
+          .hero-title {
+            font-size: clamp(2rem, 7.5vw, 2.75rem);
+          }
+
+          .hero-ctas {
+            gap: 0.8rem; /* comfortable CTA spacing */
+            padding-top: 0.15rem;
+          }
+
+          .hero-btn {
+            min-width: 9rem;
+            padding: 0.8rem 1.4rem;
+            font-size: 0.68rem;
           }
 
           .hero-scroll {
-            bottom: 1.75rem;
+            display: none !important;
           }
         }
 
@@ -334,15 +366,28 @@ export default function Hero() {
           }
         }
 
+        @media (max-width: 480px) {
+          .hero-ctas {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .hero-btn {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+          }
+        }
+
         @media (max-width: 400px) {
           .hero-content {
-            padding-top: 5rem;
-            padding-bottom: 4.5rem;
+            padding-top: 4.8rem;
+            padding-bottom: 10svh;
           }
 
           .hero-btn {
             min-width: unset;
-            padding: 0.85rem 1.25rem;
+            padding: 0.75rem 1.25rem;
           }
         }
       `}</style>

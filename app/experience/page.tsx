@@ -6,7 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
 import { Clock, Gauge, Tag } from "lucide-react";
-import Link from "next/link";
+
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -97,7 +97,7 @@ export default function ExperiencePage() {
               Contact our concierge team to arrange your itinerary.
             </p>
           </div>
-          <Link href="/contact" className="btn btn-primary">Book Your Stay First</Link>
+          <a href="/contact" className="btn btn-primary">Book Your Stay First</a>
         </FadeIn>
       </section>
 

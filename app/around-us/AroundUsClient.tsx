@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { aroundUsPlaces } from "@/lib/data/aroundUs";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
@@ -122,9 +121,9 @@ export default function AroundUsClient() {
                   </ul>
 
                   <div className="around-actions">
-                    <Link href={`/around-us/${place.id}`} className="btn-explore-around">
+                    <a href={`/around-us/${place.id}`} className="btn-explore-around">
                       Explore Details <ArrowRight size={12} style={{ marginLeft: "6px" }} aria-hidden="true" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </article>

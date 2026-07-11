@@ -265,6 +265,13 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 640px) {
+  .services-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .services-cta-title {
   color: var(--color-white);
   margin: 0;
@@ -444,6 +451,12 @@
   border-radius: 4px;
   padding: 2rem 2.5rem;
   box-shadow: var(--shadow-luxury);
+}
+
+@media (max-width: 480px) {
+  .pricing-notes {
+    padding: 1.5rem 1.25rem;
+  }
 }
 
 .notes-title {
@@ -880,6 +893,12 @@
 .attraction-visual {
   height: 300px;
   transition: transform var(--transition-smooth);
+}
+
+@media (max-width: 640px) {
+  .attraction-visual {
+    height: clamp(180px, 48vw, 260px);
+  }
 }
 
 .attraction-visual-wrap:hover .attraction-visual {

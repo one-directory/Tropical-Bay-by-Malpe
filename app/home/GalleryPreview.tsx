@@ -247,6 +247,16 @@ export default function GalleryPreview() {
             height: 155px;
           }
         }
+
+        @media (max-width: 480px) {
+          .gp-tile {
+            width: 165px;
+            height: 118px;
+          }
+          .gp-rows {
+            gap: 0.5rem;
+          }
+        }
       `}</style>
     </section>
   );

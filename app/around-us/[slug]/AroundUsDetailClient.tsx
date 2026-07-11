@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock3, Calendar, Compass, BookOpen, Info, CheckCircle } from "lucide-react";
 
 interface Place {
@@ -124,7 +123,7 @@ export default function AroundUsDetailClient({ place }: AroundUsDetailClientProp
       {/* Top Breadcrumb Navigation */}
       <nav className="detail-nav-header" aria-label="Breadcrumb">
         <div className="container-resort">
-          <Link
+          <a
             href={
               place.category === "Culture"
                 ? "/culture"
@@ -144,7 +143,7 @@ export default function AroundUsDetailClient({ place }: AroundUsDetailClientProp
                 ? "Back to Cuisine"
                 : "Back to Around Us"}
             </span>
-          </Link>
+          </a>
         </div>
       </nav>
 

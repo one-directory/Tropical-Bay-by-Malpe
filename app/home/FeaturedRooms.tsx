@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Maximize2, BedDouble, Users, Waves, ArrowRight } from "lucide-react";
 import { rooms } from "@/lib/data/rooms";
 import FadeIn from "@/components/animations/FadeIn";
@@ -27,7 +26,7 @@ function SuiteCard({
       aria-label={room.name}
     >
       {/* Full-bleed image */}
-      <Link href={`/rooms/${room.slug}`} className="sc-image-link" tabIndex={-1} aria-hidden>
+      <a href={`/rooms/${room.slug}`} className="sc-image-link" tabIndex={-1} aria-hidden>
         <div className="sc-image-wrap">
           <Image
             src={room.images[0]}
@@ -68,14 +67,14 @@ function SuiteCard({
             </div>
           </div>
         </div>
-      </Link>
+      </a>
 
       {/* Below-image strip */}
       <div className="sc-strip">
         <p className="sc-tagline">{room.tagline}</p>
-        <Link href={`/rooms/${room.slug}`} className="sc-cta">
+        <a href={`/rooms/${room.slug}`} className="sc-cta">
           Explore <ArrowRight size={13} />
-        </Link>
+        </a>
       </div>
     </article>
   );
@@ -413,6 +412,32 @@ export default function FeaturedRooms() {
           .fr2-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        @media (max-width: 768px) {
+          .sc-strip {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.65rem;
+            padding: 0.875rem 1.1rem;
+          }
+
+          .sc-tagline {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            width: 100%;
+            min-width: 0;
+            flex: none;
+          }
+
+          .sc-cta {
+            align-self: flex-start;
+            width: 100%;
+            justify-content: space-between;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(169, 129, 75, 0.08);
+          }
+        }
+
         @media (max-width: 720px) {
           .fr2-header {
             flex-direction: column;
@@ -424,8 +449,50 @@ export default function FeaturedRooms() {
 
         @media (max-width: 560px) {
           .fr2-grid { grid-template-columns: 1fr; }
+
+          /* Shrink image height slightly on single-column */
+          .sc-image-wrap { height: 220px; }
+
+          /* Shrink price badge so it doesn't overflow the card edge */
+          .sc-price {
+            font-size: 0.95rem;
+            padding: 0.2rem 0.55rem;
+          }
+
+          /* Allow specs to wrap on narrow cards */
+          .sc-specs {
+            flex-wrap: wrap;
+            gap: 0.35rem;
+          }
+
+          /* Strip padding and tagline size adjustments */
+          .sc-strip {
+            padding: 0.75rem 1rem;
+          }
+
+          .sc-tagline {
+            font-size: 0.72rem;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .sc-price {
+            font-size: 0.82rem;
+            padding: 0.18rem 0.45rem;
+          }
+
+          .sc-price-unit {
+            display: none;
+          }
+
+          .sc-name {
+            font-size: 1.2rem;
+          }
+
+          .sc-image-wrap { height: 200px; }
         }
       `}</style>
+
     </section>
   );
 }

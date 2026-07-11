@@ -1,4 +1,3 @@
-import Link from "next/link";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
@@ -99,9 +98,9 @@ export default function Amenities() {
       </StaggerContainer>
 
       <div className="am-actions container-resort">
-        <Link href="/about#facilities-heading" className="btn btn-secondary am-btn">
+        <a href="/about#facilities-heading" className="btn btn-secondary am-btn">
           View All Facilities <ArrowRight size={16} />
-        </Link>
+        </a>
       </div>
 
       <style>{`

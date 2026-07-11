@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navItems } from "@/lib/data/site";
@@ -69,13 +68,13 @@ export default function Navbar() {
 
         <div className="navbar-bar">
           <div className="navbar-inner">
-            <Link href="/" className="navbar-logo" aria-label="Tropical Bay by Malpe — Home">
+            <a href="/" className="navbar-logo" aria-label="Tropical Bay by Malpe — Home">
               <img
                 src="/images/logo/logo.png"
                 alt="Tropical Bay by Malpe"
                 className="navbar-logo-img"
               />
-            </Link>
+            </a>
 
             <div className="navbar-center">
               <nav className="navbar-desktop" aria-label="Main navigation">
@@ -91,22 +90,22 @@ export default function Navbar() {
                       linkTone={linkTone}
                     />
                   ) : (
-                    <Link
+                    <a
                       key={item.label}
                       href={item.href!}
                       className={`navbar-link ${linkTone} ${isItemActive(item) ? "navbar-link-active" : ""}`}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   )
                 )}
               </nav>
             </div>
 
             <div className="navbar-actions">
-              <Link href="/contact" className="navbar-book">
+              <a href="/contact" className="navbar-book">
                 <span className="navbar-book-label">Book Your Stay</span>
-              </Link>
+              </a>
 
               <button
                 type="button"
@@ -133,13 +132,13 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         <div className="mobile-nav-top">
-          <Link href="/" className="navbar-logo mobile-nav-logo" onClick={() => setMobileOpen(false)}>
+          <a href="/" className="navbar-logo mobile-nav-logo" onClick={() => setMobileOpen(false)}>
             <img
               src="/images/logo/logo.png"
               alt="Tropical Bay by Malpe"
               className="navbar-logo-img"
             />
-          </Link>
+          </a>
           <button
             type="button"
             className="mobile-nav-close"
@@ -178,34 +177,34 @@ export default function Navbar() {
                     className={`mobile-nav-sub ${mobileExpanded === item.label ? "mobile-nav-sub-open" : ""}`}
                   >
                     {item.children.map((child) => (
-                      <Link
+                      <a
                         key={child.href}
                         href={child.href}
                         className="mobile-nav-sublink"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </>
               ) : (
-                <Link
+                <a
                   href={item.href!}
                   className={`mobile-nav-link ${isItemActive(item) ? "mobile-nav-link-active" : ""}`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </a>
               )}
             </div>
           ))}
         </nav>
 
         <div className="mobile-nav-footer">
-          <Link href="/contact" className="navbar-book mobile-nav-book" onClick={() => setMobileOpen(false)}>
+          <a href="/contact" className="navbar-book mobile-nav-book" onClick={() => setMobileOpen(false)}>
             <span className="navbar-book-label">Book Your Stay</span>
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -738,18 +737,77 @@ export default function Navbar() {
           .navbar-burger { display: flex; }
         }
 
-        @media (max-width: 480px) {
-          .navbar-bar { padding: 0 1.25rem; }
-          .navbar-inner { min-height: 4.25rem; }
-          .navbar-logo-sub { letter-spacing: 0.22em; }
+        @media (max-width: 768px) {
+          .navbar-bar {
+            padding: 0 1.25rem;
+          }
+
+          .navbar-inner {
+            min-height: 3.8rem;
+            padding: 0.5rem 0;
+          }
+
+          .navbar-scrolled .navbar-inner {
+            min-height: 3.2rem;
+            padding: 0.4rem 0;
+          }
+
+          .navbar-logo-img {
+            height: 4rem;
+          }
+
+          .navbar-scrolled .navbar-logo-img {
+            height: 3.4rem;
+          }
+
+          .navbar-actions {
+            gap: 0.6rem;
+          }
+
+          .navbar-book {
+            padding: 0.5rem 1.15rem;
+          }
+
+          .navbar-book-label {
+            font-size: 0.65rem;
+          }
+
+          .navbar-burger {
+            width: 2.15rem;
+            height: 2.15rem;
+          }
         }
 
         @media (max-width: 380px) {
-          .navbar-bar { padding: 0 1rem; }
-          .navbar-inner { min-height: 4rem; }
-          .navbar-logo-img { height: 4.5rem; }
-          .navbar-scrolled .navbar-logo-img { height: 3.75rem; }
-          .navbar-book { padding: 0.6rem 1rem; }
+          .navbar-bar {
+            padding: 0 0.85rem;
+          }
+
+          .navbar-inner {
+            min-height: 3.5rem;
+            padding: 0.4rem 0;
+          }
+
+          .navbar-logo-img {
+            height: 3.6rem;
+          }
+
+          .navbar-scrolled .navbar-logo-img {
+            height: 3.1rem;
+          }
+
+          .navbar-book {
+            padding: 0.45rem 0.9rem;
+          }
+
+          .navbar-book-label {
+            font-size: 0.62rem;
+          }
+
+          .navbar-burger {
+            width: 2rem;
+            height: 2rem;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -848,7 +906,7 @@ function DropdownItem({
       {isActive && item.children && (
         <div className="nav-dropdown-menu">
           {item.children.map((child) => (
-            <Link
+            <a
               key={child.href}
               href={child.href}
               className="nav-dropdown-item"
@@ -860,7 +918,7 @@ function DropdownItem({
                   <span className="nav-dropdown-item-desc">{child.description}</span>
                 )}
               </span>
-            </Link>
+            </a>
           ))}
         </div>
       )}

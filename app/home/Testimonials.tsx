@@ -185,6 +185,11 @@ export default function Testimonials() {
         }
 
         @media (max-width: 768px) {
+          .testimonials-carousel {
+            margin-top: 2rem;
+            gap: 1.75rem;
+          }
+
           .testimonials-grid {
             grid-template-columns: 1fr;
           }

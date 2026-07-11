@@ -627,6 +627,10 @@ button {
     --section-y: 3.5rem;
     --section-y-lg: 5rem;
   }
+
+  .footer-main {
+    padding-block: 3rem 2.25rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -642,6 +646,20 @@ button {
 
   .container-narrow {
     padding-inline: 1.125rem;
+  }
+
+  .footer-main {
+    padding-block: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .container-resort {
+    padding-inline: 1rem;
+  }
+
+  .container-narrow {
+    padding-inline: 1rem;
   }
 }
 

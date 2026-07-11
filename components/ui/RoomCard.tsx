@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Maximize2, BedDouble, Users } from "lucide-react";
 import type { Room } from "@/lib/types";
 
@@ -13,7 +12,7 @@ export default function RoomCard({ room, priority = false, featured = false }: R
   return (
     <article className={`rc ${featured ? "rc-featured" : ""}`} aria-label={room.name}>
       {/* Image block */}
-      <Link href={`/rooms/${room.slug}`} className="rc-image-link" tabIndex={-1} aria-hidden="true">
+      <a href={`/rooms/${room.slug}`} className="rc-image-link" tabIndex={-1} aria-hidden="true">
         <div className="rc-image-wrap">
           <Image
             src={room.images[0]}
@@ -48,7 +47,7 @@ export default function RoomCard({ room, priority = false, featured = false }: R
             </div>
           </div>
         </div>
-      </Link>
+      </a>
 
       {/* Body */}
       <div className="rc-body">
@@ -67,10 +66,10 @@ export default function RoomCard({ room, priority = false, featured = false }: R
         </div>
 
         <div className="rc-footer">
-          <Link href={`/rooms/${room.slug}`} className="rc-cta">
+          <a href={`/rooms/${room.slug}`} className="rc-cta">
             Explore Suite
             <ArrowRight size={14} />
-          </Link>
+          </a>
         </div>
       </div>
 

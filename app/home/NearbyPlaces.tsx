@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -56,7 +55,7 @@ export default function NearbyPlaces() {
           <StaggerItem key={place.id}>
             <article className="np-card">
               {/* Image */}
-              <Link href={`/around-us/${place.id}`} className="np-image-link" tabIndex={-1} aria-hidden>
+              <a href={`/around-us/${place.id}`} className="np-image-link" tabIndex={-1} aria-hidden>
                 <div className="np-image-wrap">
                   {place.image && (
                     <Image
@@ -87,7 +86,7 @@ export default function NearbyPlaces() {
                     </div>
                   )}
                 </div>
-              </Link>
+              </a>
 
               {/* Body */}
               <div className="np-body">
@@ -108,9 +107,9 @@ export default function NearbyPlaces() {
                 <p className="np-tagline">{place.highlights[0] || "Explore local attraction"}</p>
                 <p className="np-desc">{place.description}</p>
 
-                <Link href={`/around-us/${place.id}`} className="np-cta">
+                <a href={`/around-us/${place.id}`} className="np-cta">
                   Explore <ArrowRight size={13} />
-                </Link>
+                </a>
               </div>
             </article>
           </StaggerItem>
@@ -124,9 +123,9 @@ export default function NearbyPlaces() {
             <p className="np-footer-text">
               Want a curated day-trip guide? Our concierge can plan the perfect itinerary for you.
             </p>
-            <Link href="/around-us" className="np-footer-btn btn btn-secondary">
+            <a href="/around-us" className="np-footer-btn btn btn-secondary">
               Explore Around Us <ArrowRight size={14} />
-            </Link>
+            </a>
           </div>
         </div>
       </FadeIn>

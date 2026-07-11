@@ -166,17 +166,43 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .floatingCard {
-    left: 8px;
-    bottom: 12px;
-    padding: 1rem 1.25rem;
-    border-radius: 14px;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: -24px auto 0;
+    width: fit-content;
+    max-width: 92%;
+    z-index: 10;
+    padding: 0.85rem 1.25rem;
+    border-radius: 16px;
+    gap: 0.85rem;
+  }
+
+  .floatingCardIcon {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-width: 0.8px;
+  }
+
+  .floatingCardIcon svg {
+    width: 14px !important;
+    height: 14px !important;
   }
 }
 
+@media (max-width: 480px) {
+  .featureGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
-@media (max-width: 640px) {
+@media (max-width: 380px) {
+  .floatingCard {
+    display: none;
+  }
 
   .featureGrid,
   .statsGrid {

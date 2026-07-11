@@ -9,7 +9,7 @@ import {
   Car, UtensilsCrossed, Waves, Wifi, BellRing, ParkingCircle,
   Shirt, Map, Sparkles, Check,
 } from "lucide-react";
-import Link from "next/link";
+
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -92,9 +92,9 @@ export default function ServicesPage() {
               Book your stay and let our team curate a personalised experience just for you.
             </p>
           </div>
-          <Link href="/contact" className="btn btn-primary">
+          <a href="/contact" className="btn btn-primary">
             Reserve Your Suite
-          </Link>
+          </a>
         </FadeIn>
       </section>
 

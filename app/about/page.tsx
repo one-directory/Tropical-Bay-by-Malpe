@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 export const dynamic = 'force-dynamic';
 
 import Image from "next/image";
-import Link from "next/link";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
@@ -86,9 +85,9 @@ export default function AboutPage() {
                 <p className="about-cta-text" style={{ fontSize: "1.1rem" }}>
                   We look forward to welcoming you to the shores of Pithrody.
                 </p>
-                <Link href="/contact" className="btn btn-primary" style={{ display: "inline-flex", background: "var(--color-primary)", color: "#fff", padding: "0.85rem 2.25rem", borderRadius: "2px", fontWeight: 600 }}>
+                <a href="/contact" className="btn btn-primary" style={{ display: "inline-flex", background: "var(--color-primary)", color: "#fff", padding: "0.85rem 2.25rem", borderRadius: "2px", fontWeight: 600 }}>
                   Plan Your Visit
-                </Link>
+                </a>
               </div>
             </FadeIn>
           </div>
@@ -183,9 +182,46 @@ export default function AboutPage() {
           padding-bottom: 4rem;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
           .about-hero {
             min-height: 55vh;
+            padding-top: 5rem;
+            padding-bottom: 3.5rem;
+          }
+
+          .about-hero-image-wrapper {
+            inset: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            width: auto;
+            height: auto;
+          }
+
+          .about-hero-overlay {
+            inset: 1rem;
+            border-radius: 8px;
+            background: linear-gradient(
+              to bottom,
+              rgba(22, 38, 43, 0.85) 0%,
+              rgba(22, 38, 43, 0.65) 50%,
+              rgba(22, 38, 43, 0.92) 100%
+            ) !important;
+          }
+
+          .about-hero .about-hero-content {
+            padding-inline: 1.5rem;
+          }
+
+          .about-hero .page-hero-title {
+            font-size: clamp(1.75rem, 6vw, 2.15rem) !important;
+            line-height: 1.2;
+          }
+
+          .about-hero .page-hero-desc {
+            font-size: 0.9rem !important;
+            line-height: 1.7;
+            max-width: 380px;
+            margin-top: 0.75rem;
           }
         }
 

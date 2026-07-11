@@ -6,7 +6,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
 import { MapPin, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -121,8 +120,8 @@ export default function AttractionsPage() {
             <p className="attr-cta-desc">Book your stay and let our concierge design your perfect coastal itinerary.</p>
           </div>
           <div className="attr-cta-actions">
-            <Link href="/contact" className="btn btn-primary">Reserve Now <ArrowRight size={14} /></Link>
-            <Link href="/explore" className="btn btn-ghost">Local Guide</Link>
+            <a href="/contact" className="btn btn-primary">Reserve Now <ArrowRight size={14} /></a>
+            <a href="/explore" className="btn btn-ghost">Local Guide</a>
           </div>
         </FadeIn>
       </section>

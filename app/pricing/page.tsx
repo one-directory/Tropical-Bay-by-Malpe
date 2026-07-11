@@ -6,7 +6,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
 import { Check, Star } from "lucide-react";
-import Link from "next/link";
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -92,9 +91,9 @@ export default function PricingPage() {
                     </ul>
                   </div>
 
-                  <Link href="/contact" className={`btn pricing-cta ${plan.badge ? "btn-primary" : "btn-secondary"}`}>
+                  <a href="/contact" className={`btn pricing-cta ${plan.badge ? "btn-primary" : "btn-secondary"}`}>
                     Book This Rate
-                  </Link>
+                  </a>
                 </article>
               </StaggerItem>
             ))}

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
 import Image from "next/image";
-import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
@@ -90,9 +89,9 @@ export default function CulturePage() {
                           </span>
                         ))}
                       </div>
-                      <Link href={`/around-us/${item.id}`} className="culture-explore-link" aria-label={`Read more about ${item.name}`}>
+                      <a href={`/around-us/${item.id}`} className="culture-explore-link" aria-label={`Read more about ${item.name}`}>
                         Read More <ArrowRight size={13} aria-hidden="true" />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </article>
@@ -192,7 +191,93 @@ export default function CulturePage() {
         @media (max-width: 768px) {
           .culture-grid-full {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
+          }
+
+          /* Dynamic height, flex stacked card flow on mobile */
+          .culture-card-full {
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: auto !important;
+            height: auto !important;
+            transform: none !important;
+            box-shadow: var(--shadow-luxury);
+          }
+
+          /* Disable absolute black overlay backdrop on mobile */
+          .culture-card-full::after {
+            display: none !important;
+          }
+
+          /* Static image card wrapper on top */
+          .culture-visual-full {
+            position: relative !important;
+            inset: auto !important;
+            width: 100% !important;
+            height: 220px !important;
+            padding: 0 !important;
+          }
+
+          /* Static details block below the image */
+          .culture-body-full {
+            position: relative !important;
+            inset: auto !important;
+            transform: none !important;
+            height: auto !important;
+            padding: 1.5rem !important;
+            background: var(--color-primary) !important;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .culture-title-full {
+            font-size: 1.3rem !important;
+            color: #F0D290 !important;
+            text-shadow: none !important;
+          }
+
+          /* Natural wrapping description, always visible, no scroll */
+          .culture-desc-full {
+            opacity: 1 !important;
+            transform: none !important;
+            font-size: 0.88rem !important;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.78) !important;
+            margin-top: 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+            max-height: none !important;
+            overflow-y: visible !important;
+          }
+
+          /* Footer (tags + cta) permanently visible and aligned */
+          .culture-footer-full {
+            opacity: 1 !important;
+            transform: none !important;
+            padding-top: 1rem !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+          }
+
+          .culture-tags-full {
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            flex: 1;
+          }
+
+          .culture-tag-full {
+            font-size: 0.65rem !important;
+            padding: 0.2rem 0.5rem !important;
+          }
+
+          .culture-explore-link {
+            font-size: 0.8rem !important;
+            align-self: center;
+            margin-bottom: 0;
+            white-space: nowrap;
           }
         }
 

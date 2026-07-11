@@ -257,6 +257,12 @@ export default function BookingWidget() {
             flex: 1 1 50%;
           }
         }
+
+        @media (max-width: 480px) {
+          .booking-field {
+            flex: 1 1 100%;
+          }
+        }
       `}</style>
     </form>
   );

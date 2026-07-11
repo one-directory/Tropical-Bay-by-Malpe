@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { CalendarDays } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 
@@ -19,9 +18,9 @@ export default function BookingCTA() {
             </p>
           </div>
           <div className="booking-cta-actions">
-            <Link href="/contact" className="btn btn-primary booking-cta-btn-primary">
+            <a href="/contact" className="btn btn-primary booking-cta-btn-primary">
               Book Your Stay <CalendarDays size={15} style={{ marginLeft: "8px" }} />
-            </Link>
+            </a>
           </div>
         </FadeIn>
       </div>

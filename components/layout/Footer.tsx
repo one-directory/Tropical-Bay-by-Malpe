@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 
 import { Phone, Mail, MapPin } from "lucide-react";
 
@@ -74,7 +74,7 @@ export default function Footer() {
 
             <div className="footer-brand">
 
-              <Link href="/" className="footer-logo" aria-label="Tropical Bay by Malpe">
+              <a href="/" className="footer-logo" aria-label="Tropical Bay by Malpe">
 
                 <img
                   src="/images/logo/logo.png"
@@ -82,7 +82,7 @@ export default function Footer() {
                   className="footer-logo-img"
                 />
 
-              </Link>
+              </a>
 
               <p className="footer-tagline">
                 Experience the charm of Udupi's coastal paradise.
@@ -131,11 +131,11 @@ export default function Footer() {
 
                   <li key={link.href}>
 
-                    <Link href={link.href} className="footer-link">
+                    <a href={link.href} className="footer-link">
 
                       {link.label}
 
-                    </Link>
+                    </a>
 
                   </li>
 
@@ -159,11 +159,11 @@ export default function Footer() {
 
                     <li key={child.href}>
 
-                      <Link href={child.href} className="footer-link">
+                      <a href={child.href} className="footer-link">
 
                         {child.label}
 
-                      </Link>
+                      </a>
 
                     </li>
 
