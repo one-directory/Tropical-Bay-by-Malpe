@@ -1579,3 +1579,56 @@ button {
     height: 2.75rem;
   }
 }
+
+/* ============================================================
+   MOBILE FOOTER OPTIMIZATION (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .footer-wave {
+    height: 35px;
+  }
+
+  .footer-main {
+    padding-block: 2.25rem 1.5rem !important;
+  }
+
+  .footer-grid {
+    gap: 1.5rem !important;
+  }
+
+  .footer-logo {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .footer-logo-img {
+    height: 6.5rem !important;
+  }
+
+  .footer-tagline {
+    margin-bottom: 1.25rem !important;
+    font-size: 0.825rem;
+  }
+
+  .footer-col-title {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .footer-links {
+    gap: 0.5rem !important;
+  }
+
+  .footer-contact-list {
+    gap: 0.65rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .footer-map {
+    margin-top: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main {
+    padding-block: 1.75rem 1.25rem !important;
+  }
+}

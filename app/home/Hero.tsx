@@ -27,7 +27,8 @@ const features = [
   },
 ];
 
-const HERO_IMAGE = "/images/home/hero.webp";
+const HERO_DESKTOP_IMAGE = "/images/home/hero-desktop.webp";
+const HERO_MOBILE_IMAGE = "/images/home/hero-mobile.webp";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -38,7 +39,11 @@ export default function Hero() {
 
     const onScroll = () => {
       const bg = hero.querySelector<HTMLDivElement>(".hero-bg");
-      if (bg) {
+      if (!bg) return;
+
+      if (window.innerWidth <= 768) {
+        bg.style.transform = "";
+      } else {
         bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
       }
     };
@@ -52,12 +57,20 @@ export default function Hero() {
       <section ref={heroRef} className="hero" aria-label="Hero — Tropical Bay by Malpe">
         <div className="hero-bg" aria-hidden="true">
           <Image
-            src={HERO_IMAGE}
+            src={HERO_DESKTOP_IMAGE}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="hero-bg-image"
+            className="hero-bg-image hero-bg-desktop"
+          />
+          <Image
+            src={HERO_MOBILE_IMAGE}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-bg-image hero-bg-mobile"
           />
         </div>
         <div className="hero-overlay" aria-hidden="true" />
@@ -121,6 +134,14 @@ export default function Hero() {
         .hero-bg-image {
           object-fit: cover;
           object-position: center;
+        }
+
+        .hero-bg-desktop {
+          display: block !important;
+        }
+
+        .hero-bg-mobile {
+          display: none !important;
         }
 
         .hero-overlay {
@@ -319,8 +340,16 @@ export default function Hero() {
             inset: 0;
           }
 
+          .hero-bg-desktop {
+            display: none !important;
+          }
+
+          .hero-bg-mobile {
+            display: block !important;
+          }
+
           .hero-bg-image {
-            object-position: 65% center !important;
+            object-position: center !important;
           }
 
           .hero-content {

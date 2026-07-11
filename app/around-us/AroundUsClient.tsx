@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { aroundUsPlaces } from "@/lib/data/aroundUs";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
-import { MapPin, Clock, Tag, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Tag, ArrowRight, ChevronDown } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
   Beach: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)",
@@ -34,7 +34,7 @@ export default function AroundUsClient() {
 
   return (
     <>
-      <div className="around-tabs-container">
+      <div className="around-tabs-container around-tabs-desktop">
         <div className="around-tabs-scroll" role="tablist" aria-label="Explore categories">
           {categories.map((cat) => (
             <button
@@ -49,6 +49,26 @@ export default function AroundUsClient() {
               {cat}
             </button>
           ))}
+        </div>
+      </div>
+
+      <div className="around-select-mobile-container" aria-label="Explore categories mobile">
+        <div className="around-select-wrapper">
+          <select
+            id="category-select"
+            value={activeCategory}
+            onChange={(e) => setActiveCategory(e.target.value as typeof categories[number])}
+            className="around-select-input"
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+          <div className="around-select-arrow" aria-hidden="true">
+            <ChevronDown size={16} />
+          </div>
         </div>
       </div>
 
@@ -209,11 +229,63 @@ export default function AroundUsClient() {
           transform: translateX(3px);
         }
 
+        .around-select-mobile-container {
+          display: none;
+        }
+
         @media (max-width: 768px) {
-          .around-tabs-container {
-            justify-content: flex-start;
-            padding-left: 1rem;
-            padding-right: 1rem;
+          .around-tabs-desktop {
+            display: none !important;
+          }
+
+          .around-select-mobile-container {
+            display: block;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+          }
+
+          .around-select-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+          }
+
+          .around-select-input {
+            width: 100%;
+            padding: 0.85rem 2.5rem 0.85rem 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-navy);
+            background: var(--color-white);
+            border: 1px solid rgba(13, 27, 42, 0.2);
+            border-radius: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            transition: border-color 280ms ease, box-shadow 280ms ease;
+          }
+
+          .around-select-input:focus {
+            outline: none;
+            border-color: var(--color-navy);
+            box-shadow: 0 0 0 3px rgba(13, 27, 42, 0.05);
+          }
+
+          .around-select-arrow {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-navy);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
       `}</style>
