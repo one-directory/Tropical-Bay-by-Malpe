@@ -1508,10 +1508,10 @@ button {
 
 .slider-counter {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 5rem;
+  right: 1.25rem;
   padding: 0.25rem 0.625rem;
-  background: rgba(13, 27, 42, 0.55);
+  background: rgba(13, 27, 42, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 2px;
@@ -1520,6 +1520,13 @@ button {
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.05em;
   z-index: 10;
+}
+
+@media (min-width: 769px) {
+  .slider-counter {
+    top: 7rem;
+    right: 2rem;
+  }
 }
 
 /* ============================================================
