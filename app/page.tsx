@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-
-
-
+export const dynamic = 'force-dynamic';
 
 import Hero from "@/app/home/Hero";
 import Welcome from "@/app/home/Welcome";

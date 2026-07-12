@@ -3,16 +3,10 @@ import { notFound } from "next/navigation";
 import { rooms, getRoomBySlug, getRelatedRooms } from "@/lib/data/rooms";
 import RoomPageTemplate from "@/components/ui/RoomPageTemplate";
 import { siteConfig } from "@/lib/data/site";
-
-
-
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  return rooms.map((room) => ({ slug: room.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-
-
+export const dynamic = 'force-dynamic';
 
 import GalleryClient from "./GalleryClient";
 import FadeIn from "@/components/animations/FadeIn";

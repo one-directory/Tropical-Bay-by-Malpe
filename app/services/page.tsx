@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-
-
+export const dynamic = 'force-dynamic';
 
 import { services } from "@/lib/data/services";
 import SectionHeading from "@/components/ui/SectionHeading";

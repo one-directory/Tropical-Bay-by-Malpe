@@ -4,10 +4,7 @@ import { getRoomBySlug, getRelatedRooms } from "@/lib/data/rooms";
 import RoomPageTemplate from "@/components/ui/RoomPageTemplate";
 import { siteConfig } from "@/lib/data/site";
 import { redirect } from "next/navigation";import { rooms } from "@/lib/data/rooms";
-
-export async function generateStaticParams() {
-  return rooms.map((room) => ({ slug: room.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: Promise<{ slug: string }>;
