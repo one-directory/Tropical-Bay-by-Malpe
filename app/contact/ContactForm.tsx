@@ -33,6 +33,15 @@ export default function ContactForm() {
     if (!form.name.trim()) newErrors.name = "Name is required";
     if (!form.email.trim()) newErrors.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = "Please enter a valid email";
+    
+    if (form.phone.trim()) {
+      const cleanPhone = form.phone.replace(/[\s\-()]/g, "");
+      const indianPhoneRegex = /^(?:\+?91|0)?[6-9]\d{9}$/;
+      if (!indianPhoneRegex.test(cleanPhone)) {
+        newErrors.phone = "Please enter a valid 10-digit Indian phone number";
+      }
+    }
+
     if (!form.message.trim()) newErrors.message = "Please tell us how we can help";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -124,7 +133,7 @@ export default function ContactForm() {
       </div>
 
       <div className="form-row">
-        <div className="form-field">
+        <div className={`form-field ${errors.phone ? "field-error" : ""}`}>
           <label htmlFor="contact-phone" className="form-label">
             <Phone size={13} aria-hidden="true" /> Phone (Optional)
           </label>
@@ -137,7 +146,10 @@ export default function ContactForm() {
             placeholder="+91 98765 43210"
             className="form-input input-light"
             autoComplete="tel"
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+            aria-invalid={!!errors.phone}
           />
+          {errors.phone && <p id="phone-error" className="field-error-msg" role="alert">{errors.phone}</p>}
         </div>
 
         <div className="form-field">
