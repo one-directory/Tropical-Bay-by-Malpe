@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+
+
 import { rooms } from "@/lib/data/rooms";
 import RoomCard from "@/components/ui/RoomCard";
 import SectionHeading from "@/components/ui/SectionHeading";

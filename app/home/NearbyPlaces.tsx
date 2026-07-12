@@ -267,11 +267,19 @@ export default function NearbyPlaces() {
           font-weight: 700;
           letter-spacing: 0.08em;
           color: var(--color-background);
-          background: rgba(22, 38, 43, 0.7);
-          backdrop-filter: blur(6px);
+          background: rgba(22, 38, 43, 0.82);
           padding: 0.28rem 0.65rem;
           border-radius: 2px;
         }
+
+        @media (min-width: 769px) {
+          .np-distance-badge {
+            background: rgba(22, 38, 43, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+          }
+        }
+
 
         /* Body */
         .np-body {

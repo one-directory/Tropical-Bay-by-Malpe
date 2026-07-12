@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+
+
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";

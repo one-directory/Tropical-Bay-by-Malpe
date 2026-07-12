@@ -251,11 +251,18 @@ export default function FeaturedRooms() {
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--color-secondary);
-          background: rgba(22, 38, 43, 0.65);
-          backdrop-filter: blur(8px);
+          background: rgba(22, 38, 43, 0.75);
           border: 1px solid rgba(169, 129, 75, 0.25);
           padding: 0.3rem 0.7rem;
           border-radius: 2px;
+        }
+
+        @media (min-width: 769px) {
+          .sc-badge {
+            background: rgba(22, 38, 43, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+          }
         }
 
         .sc-price {
@@ -263,11 +270,18 @@ export default function FeaturedRooms() {
           font-size: 1.15rem;
           font-weight: 600;
           color: var(--color-background);
-          background: rgba(169, 129, 75, 0.88);
-          backdrop-filter: blur(6px);
+          background: rgba(169, 129, 75, 0.92);
           padding: 0.25rem 0.75rem;
           border-radius: 2px;
           line-height: 1.2;
+        }
+
+        @media (min-width: 769px) {
+          .sc-price {
+            background: rgba(169, 129, 75, 0.88);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+          }
         }
 
         .sc-price-unit {

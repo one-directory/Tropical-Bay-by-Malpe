@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+
+
 import { exploreItems } from "@/lib/data/experiences";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+
+
 import ContactForm from "./ContactForm";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";

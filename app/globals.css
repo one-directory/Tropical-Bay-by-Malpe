@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+/* Fonts are loaded via next/font in layout.tsx — no @import needed here */
 @import "tailwindcss";
 
 
@@ -40,9 +40,9 @@
   --color-off-white: var(--color-background);
   --color-cream: #F3EEE3;            /* tb-ivory-deep as cream */
 
-  /* Typography */
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  /* Typography — variables injected by next/font (see layout.tsx) */
+  --font-serif: var(--font-cormorant, "Cormorant Garamond", Georgia, serif);
+  --font-sans: var(--font-jakarta, "Plus Jakarta Sans", system-ui, sans-serif);
 
   /* Spacing scale */
   --section-y: clamp(3.25rem, 5.5vw, 4.5rem);
@@ -1632,3 +1632,52 @@ button {
     padding-block: 1.75rem 1.25rem !important;
   }
 }
+
+/* ============================================================
+   CSS-DRIVEN STAGGER / FADE ANIMATIONS
+   (replaces Framer Motion for simple reveals)
+   ============================================================ */
+
+/* Stagger container — items are hidden by default */
+.stagger-item {
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--stagger-delay, 0s),
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--stagger-delay, 0s);
+}
+
+.stagger-item--up    { transform: translateY(24px); }
+.stagger-item--left  { transform: translateX(-24px); }
+.stagger-item--right { transform: translateX(24px); }
+
+/* When the container enters viewport, reveal all items */
+.stagger-visible .stagger-item {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── Respect reduced-motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item,
+  .stagger-visible .stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Also disable hero scroll animations */
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-hero-4,
+  .animate-hero-5 {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Disable marquee */
+  .gp-track {
+    animation: none !important;
+  }
+}
+

@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface StaggerContainerProps {
   children: React.ReactNode;
@@ -15,25 +14,37 @@ export function StaggerContainer({
   className = "",
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+
+    // Assign stagger delays to direct children
+    const items = container.querySelectorAll<HTMLElement>("[data-stagger-item]");
+    items.forEach((item, i) => {
+      item.style.setProperty("--stagger-delay", `${i * staggerDelay}s`);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            container.classList.add("stagger-visible");
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "-60px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [staggerDelay]);
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: staggerDelay,
-          },
-        },
-      }}
-      className={className}
-    >
+    <div ref={ref} className={`stagger-container ${className}`}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -48,30 +59,13 @@ export function StaggerItem({
   className = "",
   direction = "up",
 }: StaggerItemProps) {
-  const initial =
-    direction === "left"
-      ? { opacity: 0, x: -24 }
-      : direction === "right"
-      ? { opacity: 0, x: 24 }
-      : { opacity: 0, y: 24 };
-
   return (
-    <motion.div
-      variants={{
-        hidden: initial,
-        visible: {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          transition: {
-            duration: 0.6,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          },
-        },
-      }}
-      className={className}
+    <div
+      data-stagger-item
+      data-direction={direction}
+      className={`stagger-item stagger-item--${direction} ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

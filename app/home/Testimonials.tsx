@@ -13,13 +13,14 @@ export default function Testimonials() {
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
 
-  // Auto-play interval that resets if current or total changes
+  // Stable auto-play — interval created once, functional setState avoids stale closure
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % total);
-    }, 4000); // changes every 4 seconds
+    }, 4000);
     return () => clearInterval(timer);
-  }, [current, total]);
+  }, [total]); // ← `current` removed: functional update keeps this stable
+
 
   const getVisible = () => {
     return [

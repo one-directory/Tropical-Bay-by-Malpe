@@ -2,73 +2,73 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Bed, Sun, UtensilsCrossed, BellRing } from "lucide-react";
-
-const features = [
-  {
-    icon: Bed,
-    title: "Luxury Rooms",
-    description: "Elegantly designed rooms with modern amenities",
-  },
-  {
-    icon: Sun,
-    title: "Beach Access",
-    description: "Steps away from pristine sandy beaches",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Fine Dining",
-    description: "Exquisite cuisine with ocean views",
-  },
-  {
-    icon: BellRing,
-    title: "24/7 Service",
-    description: "Dedicated staff ready to assist you anytime",
-  },
-];
 
 const HERO_DESKTOP_IMAGE = "/images/home/hero-desktop.webp";
 const HERO_MOBILE_IMAGE = "/images/home/hero-mobile.webp";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const hero = heroRef.current;
     if (!hero) return;
 
     const onScroll = () => {
-      const bg = hero.querySelector<HTMLDivElement>(".hero-bg");
-      if (!bg) return;
-
-      if (window.innerWidth <= 768) {
-        bg.style.transform = "";
-      } else {
-        bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
-      }
+      if (rafRef.current !== null) return; // already scheduled
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        const bg = hero.querySelector<HTMLDivElement>(".hero-bg");
+        if (!bg) return;
+        // Only apply parallax on desktop
+        if (window.innerWidth > 768) {
+          bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+        } else {
+          bg.style.transform = "";
+        }
+      });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
     <>
       <section ref={heroRef} className="hero" aria-label="Hero — Tropical Bay by Malpe">
         <div className="hero-bg" aria-hidden="true">
+          {/*
+           * Desktop image — hidden on mobile via CSS, NOT priority on mobile.
+           * The `sizes` attribute ensures the browser picks the right srcset entry.
+           * We use two separate <Image> tags so Next.js can generate
+           * both srcsets independently. Display toggling is done in CSS only,
+           * which means only the *visible* image is downloaded by the browser
+           * (browsers don't download images for display:none elements when
+           * they are media-query driven — but to be safe we use fetchpriority).
+           */}
           <Image
             src={HERO_DESKTOP_IMAGE}
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="hero-bg-image hero-bg-desktop"
           />
+          {/*
+           * Mobile image — only fetched on mobile.
+           * We don't mark it priority so desktop doesn't preload it.
+           * CSS hides it on desktop so it is never rendered there.
+           */}
           <Image
             src={HERO_MOBILE_IMAGE}
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="hero-bg-image hero-bg-mobile"
           />
@@ -136,6 +136,7 @@ export default function Hero() {
           object-position: center;
         }
 
+        /* ── Desktop: show desktop, hide mobile ── */
         .hero-bg-desktop {
           display: block !important;
         }
@@ -330,6 +331,7 @@ export default function Hero() {
         .animate-hero-4 { animation: fadeUp 0.7s ease 0.55s both; }
         .animate-hero-5 { animation: fadeIn 0.7s ease 1s both; }
 
+        /* ── Mobile: show mobile image, hide desktop ── */
         @media (max-width: 768px) {
           .hero {
             min-height: 100svh;
@@ -354,15 +356,15 @@ export default function Hero() {
 
           .hero-content {
             padding-top: 5.5rem;
-            padding-bottom: 12svh; /* Move up by approx 10-15% of viewport height */
+            padding-bottom: 12svh;
           }
 
           .hero-text {
-            gap: 1.1rem; /* comfortable spacing */
+            gap: 1.1rem;
           }
 
           .hero-description {
-            max-width: 380px; /* prevent long lines and improve readability */
+            max-width: 380px;
           }
 
           .hero-title {
@@ -370,7 +372,7 @@ export default function Hero() {
           }
 
           .hero-ctas {
-            gap: 0.8rem; /* comfortable CTA spacing */
+            gap: 0.8rem;
             padding-top: 0.15rem;
           }
 

@@ -43,7 +43,8 @@ function MarqueeTrack({ images, reverse = false }: { images: { src: string; alt:
             src={img.src}
             alt={img.alt}
             fill
-            sizes="(max-width: 768px) 44vw, 22vw"
+            loading="lazy"
+            sizes="(max-width: 480px) 165px, (max-width: 600px) 220px, 300px"
             style={{ objectFit: "cover" }}
           />
           {/* Subtle hover sheen */}
@@ -193,7 +194,13 @@ export default function GalleryPreview() {
           gap: 0.75rem;
           flex-shrink: 0;
           animation: gp-scroll 38s linear infinite;
-          will-change: transform;
+        }
+
+        /* Promote to GPU layer only while visible/animating */
+        @media (prefers-reduced-motion: no-preference) {
+          .gp-track {
+            will-change: transform;
+          }
         }
 
         /* Pause on hover */
