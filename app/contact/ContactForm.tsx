@@ -35,10 +35,9 @@ export default function ContactForm() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = "Please enter a valid email";
     
     if (form.phone.trim()) {
-      const cleanPhone = form.phone.replace(/[\s\-()]/g, "");
-      const indianPhoneRegex = /^(?:\+?91|0)?[6-9]\d{9}$/;
-      if (!indianPhoneRegex.test(cleanPhone)) {
-        newErrors.phone = "Please enter a valid 10-digit Indian phone number";
+      const cleanPhone = form.phone.replace(/\D/g, "");
+      if (cleanPhone.length !== 10) {
+        newErrors.phone = "Phone number must be exactly 10 digits";
       }
     }
 
@@ -49,6 +48,18 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    if (name === "phone") {
+      const cleanValue = value.replace(/\D/g, "");
+      if (cleanValue.length <= 10) {
+        setForm((prev) => ({ ...prev, [name]: cleanValue }));
+        if (errors.phone) {
+          setErrors((prev) => ({ ...prev, phone: undefined }));
+        }
+      }
+      return;
+    }
+
     setForm((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -59,7 +70,11 @@ export default function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    openWhatsAppMessage(formatContactFormMessage(form));
+    const submittedForm = {
+      ...form,
+      phone: form.phone.trim() ? `+91 ${form.phone}` : ""
+    };
+    openWhatsAppMessage(formatContactFormMessage(submittedForm));
     await new Promise((r) => setTimeout(r, 800));
     setSubmitted(true);
     setLoading(false);
@@ -137,18 +152,21 @@ export default function ContactForm() {
           <label htmlFor="contact-phone" className="form-label">
             <Phone size={13} aria-hidden="true" /> Phone (Optional)
           </label>
-          <input
-            id="contact-phone"
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="+91 98765 43210"
-            className="form-input input-light"
-            autoComplete="tel"
-            aria-describedby={errors.phone ? "phone-error" : undefined}
-            aria-invalid={!!errors.phone}
-          />
+          <div className="phone-input-group">
+            <span className="phone-prefix-label">+91</span>
+            <input
+              id="contact-phone"
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="98765 43210"
+              className="form-input input-light phone-input"
+              autoComplete="tel"
+              aria-describedby={errors.phone ? "phone-error" : undefined}
+              aria-invalid={!!errors.phone}
+            />
+          </div>
           {errors.phone && <p id="phone-error" className="field-error-msg" role="alert">{errors.phone}</p>}
         </div>
 
@@ -311,6 +329,36 @@ export default function ContactForm() {
         }
 
         .form-textarea { resize: vertical; min-height: 140px; }
+
+        .phone-input-group {
+          display: flex;
+          align-items: stretch;
+          width: 100%;
+        }
+
+        .phone-prefix-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-inline: 1rem;
+          background: var(--color-surface);
+          border: 1px solid rgba(13, 27, 42, 0.1);
+          border-right: none;
+          border-radius: 2px 0 0 2px;
+          font-family: var(--font-sans);
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--color-navy);
+          user-select: none;
+        }
+
+        .phone-input {
+          border-radius: 0 2px 2px 0 !important;
+        }
+
+        .field-error .phone-prefix-label {
+          border-color: rgba(180, 40, 40, 0.5);
+        }
 
         .field-error .form-input { border-color: rgba(180, 40, 40, 0.5); }
 
