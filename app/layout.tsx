@@ -73,10 +73,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/resort-icon-browser.png", type: "image/png" },
       { url: "/favicon.ico" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/resort-icon-browser.png",
   },
   manifest: "/manifest.json",
   alternates: {
