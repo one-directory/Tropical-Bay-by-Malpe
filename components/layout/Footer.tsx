@@ -9,11 +9,7 @@ import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 
 
 const socialLinks = [
-
   { label: "Instagram", icon: InstagramIcon, href: siteConfig.socialLinks.instagram },
-
-  { label: "Facebook", icon: FacebookIcon, href: siteConfig.socialLinks.facebook },
-
 ];
 
 

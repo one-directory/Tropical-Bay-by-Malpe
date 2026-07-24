@@ -8,28 +8,51 @@ import FadeIn from "@/components/animations/FadeIn";
 import AroundUsClient from "@/app/around-us/AroundUsClient";
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Around Us",
-  description: "Discover what's nearby Tropical Bay by Malpe — Malpe Beach, St. Mary's Island, Udupi, Kapu Beach, and more. Distance cards with travel times.",
+  title: "Attractions Near Malpe Beach & Udupi | Tropical Bay",
+  description:
+    "Discover attractions near Tropical Bay in Udyavara, Udupi — Malpe Beach, St. Mary's Island, Kapu Lighthouse, and Sri Krishna Temple with travel times.",
   alternates: { canonical: `${siteConfig.url}/around-us` },
   openGraph: {
-    title: "Around Us | Tropical Bay by Malpe",
-    description: "Everything close to your resort — beaches, heritage sites, temples, and the city of Udupi.",
+    title: "Attractions Near Malpe Beach & Udupi | Tropical Bay",
+    description:
+      "Discover attractions near Tropical Bay in Udyavara, Udupi — Malpe Beach, St. Mary's Island, Kapu Lighthouse, and Sri Krishna Temple with travel times.",
     url: `${siteConfig.url}/around-us`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/around us main.webp",
         width: 1200,
         height: 630,
-        alt: "Around Tropical Bay by Malpe – Nearby Attractions",
+        alt: "Around Tropical Bay by Malpe – Nearby Attractions in Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Attractions Near Malpe Beach & Udupi | Tropical Bay",
+    description:
+      "Discover attractions near Tropical Bay in Udyavara, Udupi — Malpe Beach, St. Mary's Island, Kapu Lighthouse, and Sri Krishna Temple with travel times.",
+    images: ["/images/around us main.webp"],
   },
 };
 
 export default function AroundUsPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Around Us", url: `${siteConfig.url}/around-us` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="around-hero" aria-label="The World Around Tropical Bay Gallery Banner">
         <div className="around-hero-image-wrapper">

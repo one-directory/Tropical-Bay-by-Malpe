@@ -9,28 +9,51 @@ import { Clock, Gauge, Tag } from "lucide-react";
 
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Experiences",
-  description: "Discover immersive coastal experiences at Tropical Bay by Malpe — sunrise yoga, kayaking, bonfire evenings, boat rides to St. Mary's Island, seafood dining, and more.",
+  title: "Coastal Experiences & Activities in Udupi | Tropical Bay",
+  description:
+    "Discover curated coastal experiences at Tropical Bay in Udyavara, Udupi — sunrise yoga, kayaking, bonfire evenings, boat rides to St. Mary's Island & seafood dining.",
   alternates: { canonical: `${siteConfig.url}/experience` },
   openGraph: {
-    title: "Experiences | Tropical Bay by Malpe",
-    description: "Nine curated experiences celebrating the beauty and culture of the Malpe coast.",
+    title: "Coastal Experiences & Activities in Udupi | Tropical Bay",
+    description:
+      "Discover curated coastal experiences at Tropical Bay in Udyavara, Udupi — sunrise yoga, kayaking, bonfire evenings, boat rides to St. Mary's Island & seafood dining.",
     url: `${siteConfig.url}/experience`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/home/hero-desktop.webp",
         width: 1200,
         height: 630,
-        alt: "Coastal Experiences at Tropical Bay by Malpe",
+        alt: "Coastal Experiences at Tropical Bay by Malpe in Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coastal Experiences & Activities in Udupi | Tropical Bay",
+    description:
+      "Discover curated coastal experiences at Tropical Bay in Udyavara, Udupi — sunrise yoga, kayaking, bonfire evenings, and boat rides to St. Mary's Island.",
+    images: ["/images/home/hero-desktop.webp"],
   },
 };
 
 export default function ExperiencePage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Experiences", url: `${siteConfig.url}/experience` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero experience-hero">
         <div className="page-hero-overlay" aria-hidden="true" />
@@ -56,7 +79,6 @@ export default function ExperiencePage() {
               id="experience-heading"
             />
           </FadeIn>
-
           <StaggerContainer className="experience-grid">
             {experiences.map((exp) => (
               <StaggerItem key={exp.id}>

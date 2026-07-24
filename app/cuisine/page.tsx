@@ -9,22 +9,36 @@ import { Tag } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 import { aroundUsPlaces } from "@/lib/data/aroundUs";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Udupi Cuisine",
-  description: "Explore the legendary flavours of Udupi and Tulu Nadu. Authentic Kori Rotti, Masala Dosa, Ghee Roast, Neer Dosa, and Mangalore Buns near Tropical Bay.",
+  title: "Authentic Udupi Cuisine & Coastal Flavours | Tropical Bay",
+  description:
+    "Explore legendary Udupi cuisine near Tropical Bay in Udyavara — Kori Rotti, Masala Dosa, Ghee Roast, Neer Dosa, and Mangalore Buns on the Karnataka coast.",
   alternates: { canonical: `${siteConfig.url}/cuisine` },
   openGraph: {
-    title: "Udupi Cuisine | Tropical Bay by Malpe",
-    description: "Embark on a culinary journey through the authentic, legendary flavours of coastal Karnataka.",
+    title: "Authentic Udupi Cuisine & Coastal Flavours | Tropical Bay",
+    description:
+      "Explore legendary Udupi cuisine near Tropical Bay in Udyavara — Kori Rotti, Masala Dosa, Ghee Roast, Neer Dosa, and Mangalore Buns on the Karnataka coast.",
     url: `${siteConfig.url}/cuisine`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/food/food hero.webp",
         width: 1200,
         height: 630,
-        alt: "Udupi Cuisine – Authentic Coastal Karnataka Food",
+        alt: "Udupi Cuisine – Authentic Coastal Karnataka Food near Tropical Bay",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Authentic Udupi Cuisine & Coastal Flavours | Tropical Bay",
+    description:
+      "Explore legendary Udupi cuisine near Tropical Bay in Udyavara — Kori Rotti, Masala Dosa, Ghee Roast, Neer Dosa, and Mangalore Buns.",
+    images: ["/images/food/food hero.webp"],
   },
 };
 
@@ -36,6 +50,11 @@ const foodGradients = [
 ];
 
 export default function CuisinePage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Udupi Cuisine", url: `${siteConfig.url}/cuisine` },
+  ]);
+
   const preferredOrder = [
     "ghee-roast",
     "neer-dosa",
@@ -55,6 +74,10 @@ export default function CuisinePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="cuisine-hero" aria-label="Authentic Udupi Cuisine Gallery Banner">
         <div className="cuisine-hero-image-wrapper">

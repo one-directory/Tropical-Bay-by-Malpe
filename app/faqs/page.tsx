@@ -6,28 +6,57 @@ import FadeIn from "@/components/animations/FadeIn";
 import { siteConfig } from "@/lib/data/site";
 import { Phone, Mail } from "lucide-react";
 
+import { getBreadcrumbSchema, getFAQSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "FAQs",
-  description: "Frequently asked questions about staying at Tropical Bay by Malpe — reservations, rooms, dining, experiences, policies, and local travel.",
+  title: "Frequently Asked Questions | Tropical Bay by Malpe, Udupi",
+  description:
+    "Find answers to common questions about staying at Tropical Bay in Udyavara, Udupi — check-in policies, room features, dining, and local experiences.",
   alternates: { canonical: `${siteConfig.url}/faqs` },
   openGraph: {
-    title: "FAQs | Tropical Bay by Malpe",
-    description: "Everything you need to know before your stay at Malpe's premier boutique resort.",
+    title: "Frequently Asked Questions | Tropical Bay by Malpe, Udupi",
+    description:
+      "Find answers to common questions about staying at Tropical Bay in Udyavara, Udupi — check-in policies, room features, dining, and local experiences.",
     url: `${siteConfig.url}/faqs`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/home/hero-desktop.webp",
         width: 1200,
         height: 630,
-        alt: "Tropical Bay by Malpe – FAQs",
+        alt: "Tropical Bay by Malpe – FAQs in Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frequently Asked Questions | Tropical Bay by Malpe, Udupi",
+    description:
+      "Find answers to common questions about staying at Tropical Bay in Udyavara, Udupi near Malpe Beach.",
+    images: ["/images/home/hero-desktop.webp"],
   },
 };
 
 export default function FAQsPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "FAQs", url: `${siteConfig.url}/faqs` },
+  ]);
+
+  const faqSchema = getFAQSchema();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero faqs-hero">
         <div className="page-hero-overlay" aria-hidden="true" />

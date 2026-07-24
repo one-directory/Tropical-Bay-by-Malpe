@@ -8,28 +8,51 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerRe
 import { Check, Star } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Pricing",
-  description: "Transparent, seasonal pricing for all suites at Tropical Bay by Malpe. Weekday, weekend, holiday, and peak season rates for King, Queen, and Superior Suites.",
+  title: "Suites Rates & Seasonal Pricing | Tropical Bay Udupi",
+  description:
+    "Transparent seasonal pricing for rooms at Tropical Bay in Udyavara, Udupi. Weekday, weekend, holiday, and peak season rates with breakfast included.",
   alternates: { canonical: `${siteConfig.url}/pricing` },
   openGraph: {
-    title: "Pricing | Tropical Bay by Malpe",
-    description: "Find the perfect rate for your coastal escape at Malpe's premier boutique resort.",
+    title: "Suites Rates & Seasonal Pricing | Tropical Bay Udupi",
+    description:
+      "Transparent seasonal pricing for rooms at Tropical Bay in Udyavara, Udupi. Weekday, weekend, holiday, and peak season rates with breakfast included.",
     url: `${siteConfig.url}/pricing`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/home/hero-desktop.webp",
         width: 1200,
         height: 630,
-        alt: "Tropical Bay by Malpe – Pricing & Rates",
+        alt: "Tropical Bay by Malpe – Rates & Pricing in Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Suites Rates & Seasonal Pricing | Tropical Bay Udupi",
+    description:
+      "Transparent seasonal pricing for rooms at Tropical Bay in Udyavara, Udupi near Malpe Beach.",
+    images: ["/images/home/hero-desktop.webp"],
   },
 };
 
 export default function PricingPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Pricing", url: `${siteConfig.url}/pricing` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero pricing-hero">
         <div className="page-hero-overlay" aria-hidden="true" />

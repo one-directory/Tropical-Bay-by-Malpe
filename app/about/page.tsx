@@ -6,28 +6,51 @@ import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "The story of Tropical Bay by Malpe — our founding vision, mission, and the tranquil coastal sanctuary we created in Pithrody, Udupi.",
+  title: "About Us — Boutique Resort Story | Tropical Bay by Malpe",
+  description:
+    "Learn the story of Tropical Bay by Malpe — our founding vision, mission, and the tranquil riverside sanctuary created in Pithrody, Udyavara, Udupi.",
   alternates: { canonical: `${siteConfig.url}/about` },
   openGraph: {
-    title: "About Us | Tropical Bay by Malpe",
-    description: "Nestled in the backwaters of Pithrody. A luxury boutique resort built from a deep love for the coast.",
+    title: "About Us — Boutique Resort Story | Tropical Bay by Malpe",
+    description:
+      "Learn the story of Tropical Bay by Malpe — our founding vision, mission, and the tranquil riverside sanctuary created in Pithrody, Udyavara, Udupi.",
     url: `${siteConfig.url}/about`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/about us page.webp",
         width: 1200,
         height: 630,
-        alt: "Tropical Bay by Malpe – Waterfront Resort in Pithrody, Udupi",
+        alt: "Tropical Bay by Malpe – Waterfront Resort in Pithrody, Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us — Boutique Resort Story | Tropical Bay by Malpe",
+    description:
+      "Learn the story of Tropical Bay by Malpe — our founding vision, mission, and the tranquil riverside sanctuary created in Pithrody, Udyavara, Udupi.",
+    images: ["/images/about us page.webp"],
   },
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "About Us", url: `${siteConfig.url}/about` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero Section */}
       <section className="about-hero" aria-label="About Tropical Bay Showcase Banner">
         <div className="about-hero-image-wrapper">

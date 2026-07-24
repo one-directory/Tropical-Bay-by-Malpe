@@ -8,46 +8,62 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerRe
 import FadeIn from "@/components/animations/FadeIn";
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema, getHotelRoomSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Rooms & Suites",
-  description: "Explore our six handcrafted riverside accommodations at Tropical Bay — including cozy AC rooms, private villas, heritage stone cottages, and group dormitories near Udupi.",
+  title: "Suites & Accommodations in Udupi | Tropical Bay by Malpe",
+  description:
+    "Explore six handcrafted riverside rooms in Udyavara, Udupi — AC rooms, private 2BH villa, stone cottages, and group dormitories near Malpe Beach.",
   alternates: { canonical: `${siteConfig.url}/rooms` },
   openGraph: {
-    title: "Rooms & Suites | Tropical Bay",
-    description: "Six curated nature-inspired spaces on the riverbanks of Malpe, Udupi.",
+    title: "Suites & Accommodations in Udupi | Tropical Bay by Malpe",
+    description:
+      "Explore six handcrafted riverside rooms in Udyavara, Udupi — AC rooms, private 2BH villa, stone cottages, and group dormitories near Malpe Beach.",
     url: `${siteConfig.url}/rooms`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/small ac room/small ac main.webp",
         width: 1200,
         height: 630,
-        alt: "Rooms & Suites at Tropical Bay by Malpe",
+        alt: "Rooms & Suites at Tropical Bay by Malpe in Udyavara, Udupi",
       },
     ],
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  name: "Tropical Bay Udupi",
-  url: siteConfig.url,
-  containsPlace: rooms.map((r) => ({
-    "@type": "HotelRoom",
-    name: r.name,
-    description: r.description,
-    occupancy: { "@type": "QuantitativeValue", maxValue: r.occupancy },
-    floorSize: { "@type": "QuantitativeValue", value: r.size },
-    priceRange: `₹${r.pricePerNight.toLocaleString("en-IN")}+/night`,
-  })),
+  twitter: {
+    card: "summary_large_image",
+    title: "Suites & Accommodations in Udupi | Tropical Bay by Malpe",
+    description:
+      "Explore six handcrafted riverside rooms in Udyavara, Udupi near Malpe Beach.",
+    images: ["/images/small ac room/small ac main.webp"],
+  },
 };
 
 export default function RoomsPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Rooms & Suites", url: `${siteConfig.url}/rooms` },
+  ]);
+
+  const roomCatalogSchema = {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    name: siteConfig.name,
+    url: `${siteConfig.url}/rooms`,
+    containsPlace: rooms.map((r) => getHotelRoomSchema(r)),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(roomCatalogSchema) }}
       />
 
       {/* Hero */}

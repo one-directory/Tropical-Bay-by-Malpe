@@ -9,22 +9,36 @@ import { Tag, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 import { aroundUsPlaces } from "@/lib/data/aroundUs";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Culture",
-  description: "Discover the sacred culture and living traditions of Tulu Nadu — Nagamandala, Yakshagana, Kambala, and Bhoota Kola ceremonies near Tropical Bay.",
+  title: "Tulu Nadu Culture & Sacred Rituals | Tropical Bay Udupi",
+  description:
+    "Discover the sacred culture and living traditions of Tulu Nadu — Nagamandala, Yakshagana theatre, Kambala races, and Bhoota Kola ceremonies near Udupi.",
   alternates: { canonical: `${siteConfig.url}/culture` },
   openGraph: {
-    title: "Culture | Tropical Bay by Malpe",
-    description: "Immerse yourself in the sacred art forms and traditional rituals of coastal Karnataka.",
+    title: "Tulu Nadu Culture & Sacred Rituals | Tropical Bay Udupi",
+    description:
+      "Discover the sacred culture and living traditions of Tulu Nadu — Nagamandala, Yakshagana theatre, Kambala races, and Bhoota Kola ceremonies near Udupi.",
     url: `${siteConfig.url}/culture`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/culture/culture hero.webp",
         width: 1200,
         height: 630,
-        alt: "Tulu Nadu Culture – Yakshagana, Nagamandala, Kambala near Tropical Bay",
+        alt: "Tulu Nadu Culture – Yakshagana, Nagamandala, Kambala near Tropical Bay in Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tulu Nadu Culture & Sacred Rituals | Tropical Bay Udupi",
+    description:
+      "Discover the sacred culture and living traditions of Tulu Nadu — Nagamandala, Yakshagana theatre, Kambala races, and Bhoota Kola ceremonies near Udupi.",
+    images: ["/images/culture/culture hero.webp"],
   },
 };
 
@@ -37,9 +51,17 @@ const cultureGradients = [
 
 export default function CulturePage() {
   const cultureItems = aroundUsPlaces.filter(item => item.category === "Culture");
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Culture", url: `${siteConfig.url}/culture` },
+  ]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="culture-hero" aria-label="Tulu Nadu Culture Gallery Banner">
         <div className="culture-hero-image-wrapper">

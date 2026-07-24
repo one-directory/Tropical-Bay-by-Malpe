@@ -12,14 +12,36 @@ import {
 
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Premium resort services at Tropical Bay by Malpe — airport transfers, beachfront dining, private kitchens & barbecue, 24-hour room service, travel concierge, event spaces, and more.",
+  title: "Resort Services & Amenities in Udupi | Tropical Bay",
+  description:
+    "Resort services at Tropical Bay in Udyavara, Udupi — airport transfers, beachfront dining, private kitchens & BBQ, 24-hour room service, and travel concierge.",
   alternates: { canonical: `${siteConfig.url}/services` },
   openGraph: {
-    title: "Our Services | Tropical Bay by Malpe",
-    description: "Everything you could desire, thoughtfully arranged at Malpe's premier boutique resort.",
+    title: "Resort Services & Amenities in Udupi | Tropical Bay",
+    description:
+      "Resort services at Tropical Bay in Udyavara, Udupi — airport transfers, beachfront dining, private kitchens & BBQ, 24-hour room service, and travel concierge.",
     url: `${siteConfig.url}/services`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Resort Services & Amenities at Tropical Bay in Udyavara, Udupi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resort Services & Amenities in Udupi | Tropical Bay",
+    description:
+      "Resort services at Tropical Bay in Udyavara, Udupi — airport transfers, beachfront dining, private kitchens & BBQ, and travel concierge.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
@@ -29,8 +51,17 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function ServicesPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Services", url: `${siteConfig.url}/services` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero services-hero">
         <div className="page-hero-overlay" aria-hidden="true" />

@@ -7,7 +7,7 @@ export const faqs: FAQItem[] = [
     category: "Reservations",
     question: "What is your check-in and check-out time?",
     answer:
-      "Check-in is from 2:00 PM and check-out is by 11:00 AM. Early check-in and late check-out may be arranged subject to availability, and can be requested at the time of booking or by contacting our reservations team in advance. A nominal fee may apply for confirmed early/late arrangements.",
+      "Check-in is from 1:00 PM and check-out is by 11:00 AM. Early check-in and late check-out may be arranged subject to availability, and can be requested at the time of booking or by contacting our reservations team in advance. A nominal fee may apply for confirmed early/late arrangements.",
   },
   {
     id: "f2",
@@ -117,7 +117,7 @@ export const faqs: FAQItem[] = [
     category: "Policies",
     question: "Do you host private events, weddings, or corporate retreats?",
     answer:
-      "Yes. Our resort features a dedicated event lawn and indoor banquet space with capacity for intimate gatherings and celebrations. We have hosted beachside weddings, anniversary dinners, and corporate offsites. Please contact our events team at events@tropicalbaybymalpie.com with your requirements for a personalised proposal.",
+      "Yes. Our resort features a dedicated event lawn and indoor banquet space with capacity for intimate gatherings and celebrations. We have hosted beachside weddings, anniversary dinners, and corporate offsites. Please contact our events team at stay@shoreindia.com with your requirements for a personalised proposal.",
   },
 ];
 

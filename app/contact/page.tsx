@@ -5,31 +5,67 @@ import ContactForm from "./ContactForm";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
-import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
+import { InstagramIcon } from "@/components/ui/SocialIcons";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { getBreadcrumbSchema, getHotelSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with Tropical Bay by Malpe. Reserve a suite, ask a question, or plan your visit. We're available by phone, email, and in person.",
+  title: "Contact Us & Reservations | Tropical Bay by Malpe, Udupi",
+  description:
+    "Contact Tropical Bay by Malpe in Pithrody, Udyavara, Udupi. Reserve a suite, inquire about rates, or reach our concierge by phone or email.",
   alternates: { canonical: `${siteConfig.url}/contact` },
   openGraph: {
-    title: "Contact Us | Tropical Bay by Malpe",
-    description: "Reach our team for reservations, enquiries, and event planning.",
+    title: "Contact Us & Reservations | Tropical Bay by Malpe, Udupi",
+    description:
+      "Contact Tropical Bay by Malpe in Pithrody, Udyavara, Udupi. Reserve a suite, inquire about rates, or reach our concierge by phone or email.",
     url: `${siteConfig.url}/contact`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/images/home/hero-desktop.webp",
         width: 1200,
         height: 630,
-        alt: "Contact Tropical Bay by Malpe",
+        alt: "Contact Tropical Bay by Malpe in Udyavara, Udupi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us & Reservations | Tropical Bay by Malpe, Udupi",
+    description:
+      "Contact Tropical Bay by Malpe in Pithrody, Udyavara, Udupi. Reserve a suite or reach our concierge.",
+    images: ["/images/home/hero-desktop.webp"],
   },
 };
 
 export default function ContactPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Contact Us", url: `${siteConfig.url}/contact` },
+  ]);
+
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Contact Us | ${siteConfig.name}`,
+    description:
+      "Contact details, address, and location map for Tropical Bay by Malpe in Udyavara, Udupi.",
+    url: `${siteConfig.url}/contact`,
+    mainEntity: getHotelSchema(),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero contact-hero" style={{ paddingTop: "7rem", paddingBottom: "2rem" }}>
         <div className="page-hero-overlay" aria-hidden="true" />
@@ -109,7 +145,6 @@ export default function ContactPage() {
                       </a>
                     </div>
                   </li>
-
                 </ul>
 
                 <div className="info-socials">
@@ -117,9 +152,6 @@ export default function ContactPage() {
                   <div className="social-links">
                     <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                       <InstagramIcon size={16} />
-                    </a>
-                    <a href={siteConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
-                      <FacebookIcon size={16} />
                     </a>
                   </div>
                 </div>
@@ -206,8 +238,6 @@ export default function ContactPage() {
           </FadeIn>
         </div>
       </section>
-
-      
     </>
   );
 }

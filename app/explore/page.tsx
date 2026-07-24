@@ -7,15 +7,36 @@ import FadeIn from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerReveal";
 import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = {
-  title: "Explore",
-  description: "Your insider travel guide to the Malpe coast — hidden gems, local restaurants, photography spots, markets, and authentic local food experiences near Tropical Bay by Malpe.",
+  title: "Explore Udupi & Coastal Travel Guide | Tropical Bay",
+  description:
+    "Insider travel guide to Udyavara, Udupi & Malpe coast — hidden gems, local restaurants, photography spots, markets, and local food near Tropical Bay.",
   alternates: { canonical: `${siteConfig.url}/explore` },
   openGraph: {
-    title: "Explore | Tropical Bay by Malpe",
-    description: "The insider's guide to Malpe — beyond the tourist trail.",
+    title: "Explore Udupi & Coastal Travel Guide | Tropical Bay",
+    description:
+      "Insider travel guide to Udyavara, Udupi & Malpe coast — hidden gems, local restaurants, photography spots, markets, and local food near Tropical Bay.",
     url: `${siteConfig.url}/explore`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Explore Udupi & Coastal Travel Guide – Tropical Bay by Malpe",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Explore Udupi & Coastal Travel Guide | Tropical Bay",
+    description:
+      "Insider travel guide to Udyavara, Udupi & Malpe coast — hidden gems, local restaurants, photography spots, markets, and local food near Tropical Bay.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
@@ -38,8 +59,17 @@ const categoryColors: Record<string, string> = {
 const filters = ["All", "restaurant", "hidden-gem", "photography", "shopping", "local-food"];
 
 export default function ExplorePage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Explore Guide", url: `${siteConfig.url}/explore` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero explore-hero">
         <div className="page-hero-overlay" aria-hidden="true" />

@@ -8,20 +8,51 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerRe
 import { MapPin, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 
+import { getBreadcrumbSchema } from "@/lib/seo/schemas";
+
 export const metadata: Metadata = {
-  title: "Attractions",
-  description: "Top attractions near Tropical Bay by Malpe — Malpe Beach, St. Mary's Island, Sea Walk, Malpe Fishing Harbour, Udupi city, Kapu Beach Lighthouse, and Kollur Mookambika Temple.",
+  title: "Coastal Attractions Near Udupi & Malpe Beach | Tropical Bay",
+  description:
+    "Explore top attractions near Tropical Bay in Udyavara, Udupi — St. Mary's Island, Malpe Beach, Kapu Lighthouse, Sea Walk, and Kollur Mookambika Temple.",
   alternates: { canonical: `${siteConfig.url}/attractions` },
   openGraph: {
-    title: "Attractions | Tropical Bay by Malpe",
-    description: "The most beautiful and storied destinations on the Karnataka coast, all within reach of your suite.",
+    title: "Coastal Attractions Near Udupi & Malpe Beach | Tropical Bay",
+    description:
+      "Explore top attractions near Tropical Bay in Udyavara, Udupi — St. Mary's Island, Malpe Beach, Kapu Lighthouse, Sea Walk, and Kollur Mookambika Temple.",
     url: `${siteConfig.url}/attractions`,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Coastal Attractions near Tropical Bay in Udyavara, Udupi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coastal Attractions Near Udupi & Malpe Beach | Tropical Bay",
+    description:
+      "Explore top attractions near Tropical Bay in Udyavara, Udupi — St. Mary's Island, Malpe Beach, Kapu Lighthouse, and Kollur Mookambika Temple.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
 export default function AttractionsPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: siteConfig.url },
+    { name: "Attractions", url: `${siteConfig.url}/attractions` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Hero */}
       <section className="page-hero attractions-hero">
         <div className="page-hero-overlay" aria-hidden="true" />

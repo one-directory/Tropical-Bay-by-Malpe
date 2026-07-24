@@ -7,6 +7,11 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { siteConfig } from "@/lib/data/site";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  getHotelSchema,
+  getOrganizationSchema,
+  getWebSiteSchema,
+} from "@/lib/seo/schemas";
 
 /* ── Font definitions — loaded once, injected as CSS variables ── */
 const cormorant = Cormorant_Garamond({
@@ -33,17 +38,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "luxury resort Malpe",
-    "beach resort Karnataka",
-    "Malpe Beach hotel",
-    "boutique resort Udupi",
-    "beachfront resort Karnataka",
-    "King Suite Malpe",
-    "sea view resort Karnataka",
-    "Tropical Bay by Malpe",
-    "resort near St Mary's Island",
-  ],
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -56,7 +50,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — Luxury Beach Resort, Malpe, Karnataka`,
+        alt: `${siteConfig.name} — Boutique Resort in Udyavara, Udupi`,
       },
     ],
   },
@@ -95,11 +89,29 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const hotelSchema = getHotelSchema();
+  const orgSchema = getOrganizationSchema();
+  const websiteSchema = getWebSiteSchema();
+
   return (
     <html
       lang="en"
       className={`${cormorant.variable} ${plusJakarta.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body>
         <Navbar />
         <main id="main-content" tabIndex={-1}>
@@ -112,3 +124,4 @@ export default function RootLayout({
     </html>
   );
 }
+
