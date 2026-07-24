@@ -72,16 +72,16 @@ export default function AroundUsClient() {
         </div>
       </div>
 
-      <div 
-        id={`panel-${activeCategory.toLowerCase()}`} 
-        role="tabpanel" 
+      <div
+        id={`panel-${activeCategory.toLowerCase()}`}
+        role="tabpanel"
         aria-labelledby={`tab-${activeCategory.toLowerCase()}`}
       >
         <StaggerContainer key={activeCategory} className="around-grid">
           {filteredPlaces.map((place) => (
             <StaggerItem key={place.id}>
               <article id={place.id} className="around-card card-resort" aria-label={place.name}>
-                 <div
+                <div
                   className="around-visual"
                   style={{ background: !place.image ? (categoryColors[place.category] ?? categoryColors.Beach) : undefined }}
                   aria-hidden="true"
@@ -98,10 +98,10 @@ export default function AroundUsClient() {
                           place.id === "kapu-beach"
                             ? "center 20%"
                             : place.id === "malpe-fishing-harbour"
-                            ? "center bottom"
-                            : place.id === "attur-church"
-                            ? "center 30%"
-                            : "center",
+                              ? "center bottom"
+                              : place.id === "attur-church"
+                                ? "center 30%"
+                                : "center",
                         zIndex: 0
                       }}
                     />

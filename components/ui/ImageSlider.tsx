@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 interface ImageSliderProps {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; objectPosition?: string }[];
   className?: string;
   /** "cover" fills the container (may crop). "natural" renders at full width × natural height, no gaps, no crop. */
   objectFit?: "cover" | "natural";
@@ -139,7 +139,7 @@ export default function ImageSlider({ images, className = "", objectFit = "cover
                   alt={img.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 80vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: img.objectPosition ?? "center center" }}
                   priority={i === 0}
                 />
               </div>

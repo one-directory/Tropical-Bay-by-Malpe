@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 
@@ -11,7 +12,7 @@ const categories: GalleryCategory[] = ["All", "Rooms", "Dining", "Riverside", "B
 
 interface GalleryItem {
   id: number;
-  gradient: string;
+  src: string;
   category: Exclude<GalleryCategory, "All">;
   label: string;
   tall?: boolean;
@@ -19,18 +20,29 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #24373D 100%)", category: "Rooms", label: "First Floor — River View", tall: true },
-  { id: 2, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Riverside", label: "Riverside Deck at Dusk" },
-  { id: 3, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #C9A972 100%)", category: "Dining", label: "The Palm Table — Seafood Night" },
-  { id: 4, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #C9A972 100%)", category: "Beach", label: "Malpe Beach at Dawn", wide: true },
-  { id: 5, gradient: "linear-gradient(135deg, #24373D 0%, var(--color-primary) 100%)", category: "Exterior", label: "Resort Gardens" },
-  { id: 6, gradient: "linear-gradient(135deg, #0F1B1E 0%, var(--color-primary) 100%)", category: "Rooms", label: "Gulum Cottage — Porch" },
-  { id: 7, gradient: "linear-gradient(135deg, #C9A972 0%, var(--color-secondary) 100%)", category: "Dining", label: "Breakfast Spread", tall: true },
-  { id: 8, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Riverside", label: "Riverside Lounger" },
-  { id: 9, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #A9814B 100%)", category: "Beach", label: "Sunset at Malpe" },
-  { id: 10, gradient: "linear-gradient(135deg, var(--color-primary) 0%, #0F1B1E 100%)", category: "Rooms", label: "Small AC Room — Interior" },
-  { id: 11, gradient: "linear-gradient(135deg, var(--color-secondary) 0%, #24373D 100%)", category: "Exterior", label: "Resort Facade — Night", wide: true },
-  { id: 12, gradient: "linear-gradient(135deg, #24373D 0%, var(--color-primary) 100%)", category: "Dining", label: "Evening Dining" },
+  // First Floor — Rooms
+  { id: 1,  src: "/images/first floor/1st floor 1.webp",   category: "Rooms",     label: "First Floor — River View",       tall: true },
+  { id: 2,  src: "/images/first floor/1st floor 5.webp",   category: "Rooms",     label: "First Floor — Sunset Balcony",   wide: true },
+  { id: 3,  src: "/images/first floor/1st floor 2.webp",   category: "Rooms",     label: "First Floor — Interior" },
+  { id: 4,  src: "/images/first floor/1st floor 3.webp",   category: "Rooms",     label: "First Floor — Room Detail" },
+  { id: 5,  src: "/images/first floor/1st floor 4.webp",   category: "Rooms",     label: "First Floor — Riverside Side" },
+  { id: 6,  src: "/images/first floor/1st floor 6.webp",   category: "Riverside", label: "Riverside Deck at Dusk",         wide: true },
+  { id: 7,  src: "/images/first floor/1st floor 7.webp",   category: "Riverside", label: "River View Lounge" },
+  { id: 8,  src: "/images/first floor/1st floor 8.webp",   category: "Rooms",     label: "First Floor — Cozy Corner",      tall: true },
+  { id: 9,  src: "/images/first floor/1st floor main.webp",category: "Exterior",  label: "First Floor — Exterior Night" },
+  // Gulum Cottage
+  { id: 10, src: "/images/gulum/gulum main.webp",          category: "Rooms",     label: "Gulum Cottage — Porch",          tall: true },
+  { id: 11, src: "/images/gulum/gulum 1.webp",             category: "Exterior",  label: "Gulum — Riverside Gardens" },
+  { id: 12, src: "/images/gulum/gulum 2.webp",             category: "Rooms",     label: "Gulum — Interior" },
+  // Dorm
+  { id: 13, src: "/images/dorm/dorm main.webp",            category: "Rooms",     label: "Riverside Dormitory" },
+  { id: 14, src: "/images/dorm/dorm 1.webp",               category: "Rooms",     label: "Dorm — Bunk Beds" },
+  // Small AC Room
+  { id: 15, src: "/images/small ac room/small ac main.webp", category: "Rooms",   label: "Small AC Room",                  wide: true },
+  { id: 16, src: "/images/small ac room/small ac 2.webp",  category: "Rooms",     label: "Small AC — Interior" },
+  // Large AC Room
+  { id: 17, src: "/images/large ac room/large ac main.webp",category: "Rooms",    label: "Large AC Room",                  tall: true },
+  { id: 18, src: "/images/large ac room/large ac 1.webp",  category: "Rooms",     label: "Large AC — River View" },
 ];
 
 export default function GalleryClient() {
@@ -84,7 +96,13 @@ export default function GalleryClient() {
               onClick={() => openLightbox(item)}
               aria-label={`View ${item.label}`}
             >
-              <div className="gallery-cell-bg" style={{ background: item.gradient }} aria-hidden="true" />
+              <Image
+                src={item.src}
+                alt={item.label}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="gallery-cell-img"
+              />
               <div className="gallery-cell-overlay" aria-hidden="true">
                 <span className="gallery-cell-label">{item.label}</span>
                 <span className="gallery-cell-cat">{item.category}</span>
@@ -114,11 +132,15 @@ export default function GalleryClient() {
             className="lightbox-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <div
-              className="lightbox-image"
-              style={{ background: lightboxItem.gradient }}
-              aria-hidden="true"
-            />
+            <div className="lightbox-image-wrap">
+              <Image
+                src={lightboxItem.src}
+                alt={lightboxItem.label}
+                fill
+                sizes="(max-width: 640px) 100vw, 900px"
+                className="lightbox-img"
+              />
+            </div>
             <div className="lightbox-info">
               <span className="lightbox-cat">{lightboxItem.category}</span>
               <h2 className="lightbox-title">{lightboxItem.label}</h2>
@@ -126,6 +148,7 @@ export default function GalleryClient() {
           </div>
         </div>
       )}
+
 
       <style>{`
         /* Filters */
@@ -198,14 +221,12 @@ export default function GalleryClient() {
           overflow: hidden;
         }
 
-        .gallery-cell-bg {
-          width: 100%;
-          height: 100%;
-          min-height: 200px;
+        .gallery-cell-img {
+          object-fit: cover;
           transition: transform var(--transition-smooth);
         }
 
-        .gallery-cell-btn:hover .gallery-cell-bg { transform: scale(1.05); }
+        .gallery-cell-btn:hover .gallery-cell-img { transform: scale(1.05); }
 
         .gallery-cell-overlay {
           position: absolute;
@@ -280,9 +301,14 @@ export default function GalleryClient() {
           box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
         }
 
-        .lightbox-image {
+        .lightbox-image-wrap {
+          position: relative;
           width: 100%;
           height: 500px;
+        }
+
+        .lightbox-img {
+          object-fit: cover;
         }
 
         .lightbox-info {
@@ -315,7 +341,7 @@ export default function GalleryClient() {
         }
 
         @media (max-width: 640px) {
-          .lightbox-image { height: 300px; }
+          .lightbox-image-wrap { height: 300px; }
         }
       `}</style>
     </>

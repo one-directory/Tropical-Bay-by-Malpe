@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     title: "Around Us | Tropical Bay by Malpe",
     description: "Everything close to your resort — beaches, heritage sites, temples, and the city of Udupi.",
     url: `${siteConfig.url}/around-us`,
+    images: [
+      {
+        url: "/images/around us main.webp",
+        width: 1200,
+        height: 630,
+        alt: "Around Tropical Bay by Malpe – Nearby Attractions",
+      },
+    ],
   },
 };
 

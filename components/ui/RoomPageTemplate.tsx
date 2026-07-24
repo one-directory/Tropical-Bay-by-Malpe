@@ -14,10 +14,15 @@ interface RoomPageTemplateProps {
 }
 
 export default function RoomPageTemplate({ room, relatedRooms }: RoomPageTemplateProps) {
-  const sliderImages = room.images.map((src, i) => ({
-    src,
-    alt: `${room.name} at Tropical Bay by Malpe — view ${i + 1}`,
-  }));
+  const sliderImages = room.images.map((img, i) => {
+    const src = typeof img === "string" ? img : img.src;
+    const objectPosition = typeof img === "string" ? undefined : img.objectPosition;
+    return {
+      src,
+      alt: `${room.name} at Tropical Bay by Malpe — view ${i + 1}`,
+      objectPosition,
+    };
+  });
 
   return (
     <>

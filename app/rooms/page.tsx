@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     title: "Rooms & Suites | Tropical Bay",
     description: "Six curated nature-inspired spaces on the riverbanks of Malpe, Udupi.",
     url: `${siteConfig.url}/rooms`,
+    images: [
+      {
+        url: "/images/small ac room/small ac main.webp",
+        width: 1200,
+        height: 630,
+        alt: "Rooms & Suites at Tropical Bay by Malpe",
+      },
+    ],
   },
 };
 
@@ -47,7 +55,7 @@ export default function RoomsPage() {
         <div className="page-hero-overlay" aria-hidden="true" />
         <FadeIn className="container-resort page-hero-content">
           <span className="text-overline page-hero-overline">Accommodation</span>
-          <h1 className="text-h1 page-hero-title">Suites & Accommodation</h1>
+          <h1 className="text-h1 page-hero-title">Suites &amp; Accommodation</h1>
           <p className="page-hero-desc">
             Six distinct sanctuaries, each shaped by the quiet character of the river.
             Choose the space that speaks to your sense of escape.
@@ -62,7 +70,7 @@ export default function RoomsPage() {
             <SectionHeading
               overline="Our Collection"
               title="Choose Your Sanctuary"
-              subtitle="From panoramic river balconies to traditional stone cottages and social social group dorms, every room at Tropical Bay is crafted to connect you with nature."
+              subtitle="From panoramic river balconies to traditional stone cottages and social group dorms, every room at Tropical Bay is crafted to connect you with nature."
               id="all-rooms-heading"
             />
           </FadeIn>

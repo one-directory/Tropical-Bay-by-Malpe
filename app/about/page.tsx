@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     title: "About Us | Tropical Bay by Malpe",
     description: "Nestled in the backwaters of Pithrody. A luxury boutique resort built from a deep love for the coast.",
     url: `${siteConfig.url}/about`,
+    images: [
+      {
+        url: "/images/about us page.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tropical Bay by Malpe – Waterfront Resort in Pithrody, Udupi",
+      },
+    ],
   },
 };
 

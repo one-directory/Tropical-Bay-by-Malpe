@@ -17,6 +17,14 @@ export const metadata: Metadata = {
     title: "Experiences | Tropical Bay by Malpe",
     description: "Nine curated experiences celebrating the beauty and culture of the Malpe coast.",
     url: `${siteConfig.url}/experience`,
+    images: [
+      {
+        url: "/images/home/hero-desktop.webp",
+        width: 1200,
+        height: 630,
+        alt: "Coastal Experiences at Tropical Bay by Malpe",
+      },
+    ],
   },
 };
 

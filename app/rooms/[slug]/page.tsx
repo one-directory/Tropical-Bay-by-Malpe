@@ -14,6 +14,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const room = getRoomBySlug(slug);
   if (!room) return {};
 
+  const firstImage = room.images[0];
+  const ogImageUrl = typeof firstImage === "string" ? firstImage : firstImage.src;
+
   return {
     title: room.name,
     description: room.description,
@@ -22,6 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${room.name} | ${siteConfig.name}`,
       description: room.tagline,
       url: `${siteConfig.url}/rooms/${slug}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${room.name} at Tropical Bay by Malpe`,
+        },
+      ],
     },
   };
 }

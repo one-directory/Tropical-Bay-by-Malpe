@@ -9,13 +9,16 @@ interface RoomCardProps {
 }
 
 export default function RoomCard({ room, priority = false, featured = false }: RoomCardProps) {
+  const firstImg = room.images[0];
+  const coverSrc = typeof firstImg === "string" ? firstImg : firstImg.src;
+
   return (
     <article className={`rc ${featured ? "rc-featured" : ""}`} aria-label={room.name}>
       {/* Image block */}
       <a href={`/rooms/${room.slug}`} className="rc-image-link" tabIndex={-1} aria-hidden="true">
         <div className="rc-image-wrap">
           <Image
-            src={room.images[0]}
+            src={coverSrc}
             alt={`${room.name} at Tropical Bay`}
             fill
             sizes={featured

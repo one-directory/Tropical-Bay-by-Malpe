@@ -3,7 +3,6 @@ export const dynamic = 'force-dynamic';
 
 import FAQsClient from "./FAQsClient";
 import FadeIn from "@/components/animations/FadeIn";
-
 import { siteConfig } from "@/lib/data/site";
 import { Phone, Mail } from "lucide-react";
 
@@ -15,6 +14,14 @@ export const metadata: Metadata = {
     title: "FAQs | Tropical Bay by Malpe",
     description: "Everything you need to know before your stay at Malpe's premier boutique resort.",
     url: `${siteConfig.url}/faqs`,
+    images: [
+      {
+        url: "/images/home/hero-desktop.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tropical Bay by Malpe – FAQs",
+      },
+    ],
   },
 };
 
@@ -29,7 +36,7 @@ export default function FAQsPage() {
           <h1 className="text-h1 page-hero-title">Frequently Asked Questions</h1>
           <p className="page-hero-desc">
             Find answers to the most common questions about your stay. If you need
-            anything beyond what's here, our team is just a call away.
+            anything beyond what&apos;s here, our team is just a call away.
           </p>
         </FadeIn>
       </section>
@@ -48,7 +55,7 @@ export default function FAQsPage() {
             <h2 className="text-h2 faqs-contact-title">Still have a question?</h2>
             <p className="faqs-contact-desc">
               Our concierge team is available from 6 AM to 10 PM daily.
-              We're always happy to help you plan the perfect stay.
+              We&apos;re always happy to help you plan the perfect stay.
             </p>
           </div>
           <div className="faqs-contact-actions">

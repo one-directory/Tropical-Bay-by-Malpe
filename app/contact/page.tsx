@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     title: "Contact Us | Tropical Bay by Malpe",
     description: "Reach our team for reservations, enquiries, and event planning.",
     url: `${siteConfig.url}/contact`,
+    images: [
+      {
+        url: "/images/home/hero-desktop.webp",
+        width: 1200,
+        height: 630,
+        alt: "Contact Tropical Bay by Malpe",
+      },
+    ],
   },
 };
 

@@ -17,6 +17,14 @@ export const metadata: Metadata = {
     title: "Culture | Tropical Bay by Malpe",
     description: "Immerse yourself in the sacred art forms and traditional rituals of coastal Karnataka.",
     url: `${siteConfig.url}/culture`,
+    images: [
+      {
+        url: "/images/culture/culture hero.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tulu Nadu Culture – Yakshagana, Nagamandala, Kambala near Tropical Bay",
+      },
+    ],
   },
 };
 

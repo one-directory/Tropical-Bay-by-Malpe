@@ -17,6 +17,8 @@ function SuiteCard({
   priority?: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
+  const firstImg = room.images[0];
+  const coverSrc = typeof firstImg === "string" ? firstImg : firstImg.src;
 
   return (
     <article
@@ -29,7 +31,7 @@ function SuiteCard({
       <a href={`/rooms/${room.slug}`} className="sc-image-link" tabIndex={-1} aria-hidden>
         <div className="sc-image-wrap">
           <Image
-            src={room.images[0]}
+            src={coverSrc}
             alt={room.name}
             fill
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"

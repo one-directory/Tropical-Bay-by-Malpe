@@ -12,7 +12,7 @@ export interface Room {
   view: string;
   pricePerNight: number;
   weekendPrice: number;
-  images: string[];
+  images: (string | { src: string; objectPosition?: string })[];
   amenities: string[];
   features: string[];
   highlights: string[];

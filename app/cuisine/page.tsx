@@ -17,6 +17,14 @@ export const metadata: Metadata = {
     title: "Udupi Cuisine | Tropical Bay by Malpe",
     description: "Embark on a culinary journey through the authentic, legendary flavours of coastal Karnataka.",
     url: `${siteConfig.url}/cuisine`,
+    images: [
+      {
+        url: "/images/food/food hero.webp",
+        width: 1200,
+        height: 630,
+        alt: "Udupi Cuisine – Authentic Coastal Karnataka Food",
+      },
+    ],
   },
 };
 

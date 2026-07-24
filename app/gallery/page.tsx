@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     title: "Gallery | Tropical Bay by Malpe",
     description: "A visual journey through life at Tropical Bay — from suites to sunsets.",
     url: `${siteConfig.url}/gallery`,
+    images: [
+      {
+        url: "/images/home/aboutresort.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tropical Bay by Malpe Photo Gallery",
+      },
+    ],
   },
 };
 

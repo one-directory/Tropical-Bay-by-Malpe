@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     title: "Pricing | Tropical Bay by Malpe",
     description: "Find the perfect rate for your coastal escape at Malpe's premier boutique resort.",
     url: `${siteConfig.url}/pricing`,
+    images: [
+      {
+        url: "/images/home/hero-desktop.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tropical Bay by Malpe – Pricing & Rates",
+      },
+    ],
   },
 };
 
