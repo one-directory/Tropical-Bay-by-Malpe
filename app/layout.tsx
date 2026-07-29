@@ -73,10 +73,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/resort-icon-browser.png", type: "image/png" },
+      { url: "/images/logo/logoog.webp", type: "image/webp" },
       { url: "/favicon.ico" },
     ],
-    apple: "/resort-icon-browser.png",
+    apple: "/images/logo/logoog.webp",
   },
   manifest: "/manifest.json",
   alternates: {

@@ -73,7 +73,7 @@ export default function Footer() {
               <a href="/" className="footer-logo" aria-label="Tropical Bay by Malpe">
 
                 <img
-                  src="/images/logo/logo.webp"
+                  src="/images/logo/logowb.webp"
                   alt="Tropical Bay by Malpe"
                   className="footer-logo-img"
                 />

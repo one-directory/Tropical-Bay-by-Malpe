@@ -70,7 +70,7 @@ export default function Navbar() {
           <div className="navbar-inner">
             <a href="/" className="navbar-logo" aria-label="Tropical Bay by Malpe — Home">
               <img
-                src="/images/logo/logo.webp"
+                src="/images/logo/logowb.webp"
                 alt="Tropical Bay by Malpe"
                 className="navbar-logo-img"
               />
@@ -134,7 +134,7 @@ export default function Navbar() {
         <div className="mobile-nav-top">
           <a href="/" className="navbar-logo mobile-nav-logo" onClick={() => setMobileOpen(false)}>
             <img
-              src="/images/logo/logo.png"
+              src="/images/logo/logowb.webp"
               alt="Tropical Bay by Malpe"
               className="navbar-logo-img"
             />
