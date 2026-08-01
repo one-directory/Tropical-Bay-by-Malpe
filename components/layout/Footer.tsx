@@ -10,6 +10,7 @@ import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 
 const socialLinks = [
   { label: "Instagram", icon: InstagramIcon, href: siteConfig.socialLinks.instagram },
+  { label: "Facebook", icon: FacebookIcon, href: siteConfig.socialLinks.facebook },
 ];
 
 
@@ -184,13 +185,8 @@ export default function Footer() {
                   <MapPin size={14} className="footer-contact-icon" aria-hidden="true" />
 
                   <address className="footer-address">
-
                     {siteConfig.address.line1}<br />
-
-                    {siteConfig.address.line2}<br />
-
-                    {siteConfig.address.city}, {siteConfig.address.state} — {siteConfig.address.pin}
-
+                    {siteConfig.address.line2}, {siteConfig.address.city}, {siteConfig.address.state} — {siteConfig.address.pin}
                   </address>
 
                 </li>

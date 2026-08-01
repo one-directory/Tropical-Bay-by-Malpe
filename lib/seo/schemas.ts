@@ -42,7 +42,7 @@ export function getOrganizationSchema() {
     url: siteConfig.url,
     logo: `${siteConfig.url}${siteConfig.logo}`,
     email: siteConfig.email,
-    sameAs: [siteConfig.socialLinks.instagram],
+    sameAs: [siteConfig.socialLinks.instagram, siteConfig.socialLinks.facebook],
   };
 }
 

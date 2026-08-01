@@ -71,14 +71,13 @@ export const siteConfig = {
   url: "https://www.tropicalbaymalpe.com",
   email: "stay@shoreindia.com",
   phones: [
-    { display: "+91 90354 30365", tel: "+919035430365" },
-    { display: "+91 73491 30365", tel: "+917349130365", whatsapp: true },
+    { display: "+91 76192 77727", tel: "+917619277727", whatsapp: true },
   ],
   whatsappMessage:
     "Hello! I'm interested in booking a stay at Tropical Bay by Malpe. Could you please share availability and rates?",
   address: {
     line1: "Pithrody Beach Access Road, Pithrody",
-    line2: "Udyavara, Udupi",
+    line2: "Udyavara",
     city: "Udupi",
     state: "Karnataka",
     pin: "574118",
@@ -93,6 +92,7 @@ export const siteConfig = {
   logo: "/images/logo/logowb.webp",
   socialLinks: {
     instagram: "https://www.instagram.com/tropical.malpe",
+    facebook: "https://www.facebook.com/shoreindia",
   },
   bookingPlatforms: {
     bookingCom: "https://www.booking.com/hotel/in/coral-reefs-of-malpe-udupi.html",

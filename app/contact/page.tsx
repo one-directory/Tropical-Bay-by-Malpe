@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
-import { InstagramIcon } from "@/components/ui/SocialIcons";
+import { InstagramIcon, FacebookIcon, BookingComIcon, AgodaIcon, AirbnbIcon } from "@/components/ui/SocialIcons";
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { getBreadcrumbSchema, getHotelSchema } from "@/lib/seo/schemas";
 
@@ -111,8 +111,7 @@ export default function ContactPage() {
                       <p className="info-label">Address</p>
                       <address className="info-value" style={{ fontStyle: "normal" }}>
                         {siteConfig.address.line1}<br />
-                        {siteConfig.address.line2}<br />
-                        {siteConfig.address.city}, {siteConfig.address.state} — {siteConfig.address.pin}<br />
+                        {siteConfig.address.line2}, {siteConfig.address.city}, {siteConfig.address.state} — {siteConfig.address.pin}<br />
                         {siteConfig.address.country}
                       </address>
                     </div>
@@ -153,6 +152,9 @@ export default function ContactPage() {
                     <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                       <InstagramIcon size={16} />
                     </a>
+                    <a href={siteConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
+                      <FacebookIcon size={16} />
+                    </a>
                   </div>
                 </div>
 
@@ -166,7 +168,7 @@ export default function ContactPage() {
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: "0.35rem",
+                        gap: "0.4rem",
                         padding: "0.45rem 0.8rem",
                         borderRadius: "4px",
                         background: "#003580",
@@ -176,6 +178,7 @@ export default function ContactPage() {
                         textDecoration: "none"
                       }}
                     >
+                      <BookingComIcon size={14} />
                       <span>Booking.com</span>
                       <ExternalLink size={12} />
                     </a>
@@ -186,7 +189,7 @@ export default function ContactPage() {
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: "0.35rem",
+                        gap: "0.4rem",
                         padding: "0.45rem 0.8rem",
                         borderRadius: "4px",
                         background: "#2f65c9",
@@ -196,6 +199,7 @@ export default function ContactPage() {
                         textDecoration: "none"
                       }}
                     >
+                      <AgodaIcon size={14} />
                       <span>Agoda</span>
                       <ExternalLink size={12} />
                     </a>
@@ -206,7 +210,7 @@ export default function ContactPage() {
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: "0.35rem",
+                        gap: "0.4rem",
                         padding: "0.45rem 0.8rem",
                         borderRadius: "4px",
                         background: "#FF5A5F",
@@ -216,6 +220,7 @@ export default function ContactPage() {
                         textDecoration: "none"
                       }}
                     >
+                      <AirbnbIcon size={14} />
                       <span>Airbnb</span>
                       <ExternalLink size={12} />
                     </a>

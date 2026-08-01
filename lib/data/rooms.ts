@@ -12,8 +12,8 @@ export const rooms: Room[] = [
     occupancy: 3,
     beds: "1 Double Bed",
     view: "Riverside Garden View",
-    pricePerNight: 2500,
-    weekendPrice: 3000,
+    pricePerNight: 3000,
+    weekendPrice: 3600,
     images: [
       "/images/small ac room/small ac main.webp",
       "/images/small ac room/small ac 2.webp",
@@ -58,8 +58,8 @@ export const rooms: Room[] = [
     occupancy: 3,
     beds: "1 King Bed + 1 Single Bed",
     view: "River & Forest View",
-    pricePerNight: 3500,
-    weekendPrice: 4200,
+    pricePerNight: 4000,
+    weekendPrice: 4800,
     images: [
       "/images/large ac room/large ac main.webp",
       "/images/large ac room/large ac 1.webp",
@@ -104,8 +104,8 @@ export const rooms: Room[] = [
     occupancy: 2,
     beds: "1 King Bed",
     view: "Elevated River View",
-    pricePerNight: 4500,
-    weekendPrice: 5500,
+    pricePerNight: 5000,
+    weekendPrice: 6000,
     images: [
       "/images/first floor/1st floor main.webp",
       "/images/first floor/1st floor 1.webp",
@@ -242,8 +242,8 @@ export const rooms: Room[] = [
     occupancy: 15,
     beds: "15 Single Beds",
     view: "River View",
-    pricePerNight: 1200,
-    weekendPrice: 1500,
+    pricePerNight: 2000,
+    weekendPrice: 2500,
     images: [
       "/images/dorm/dorm main.webp",
       "/images/dorm/dorm 1.webp",

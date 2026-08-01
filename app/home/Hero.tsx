@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/lib/data/site";
 import { ExternalLink } from "lucide-react";
+import { BookingComIcon, AgodaIcon, AirbnbIcon } from "@/components/ui/SocialIcons";
 
 const HERO_DESKTOP_IMAGE = "/images/home/hero-desktop.webp";
 const HERO_MOBILE_IMAGE = "/images/home/hero-mobile.webp";
@@ -100,7 +101,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="hero-ota-pill ota-booking"
                 >
-                  <span className="ota-icon-badge">B.</span>
+                  <BookingComIcon size={14} className="ota-svg-icon" />
                   <span>Booking.com</span>
                   <ExternalLink size={10} className="ota-ext-icon" />
                 </a>
@@ -111,7 +112,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="hero-ota-pill ota-agoda"
                 >
-                  <span className="ota-icon-badge">a</span>
+                  <AgodaIcon size={14} className="ota-svg-icon" />
                   <span>Agoda</span>
                   <ExternalLink size={10} className="ota-ext-icon" />
                 </a>
@@ -122,7 +123,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="hero-ota-pill ota-airbnb"
                 >
-                  <span className="ota-icon-badge">★</span>
+                  <AirbnbIcon size={14} className="ota-svg-icon" />
                   <span>Airbnb</span>
                   <ExternalLink size={10} className="ota-ext-icon" />
                 </a>

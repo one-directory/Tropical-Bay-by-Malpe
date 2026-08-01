@@ -48,8 +48,8 @@ export default function Testimonials() {
         <div className="testimonials-carousel" role="region" aria-label="Guest testimonials">
           <div className="testimonials-grid">
             {visible.map((t, i) => (
-              <FadeIn 
-                key={t.id} 
+              <FadeIn
+                key={t.id}
                 delay={i * 0.1}
                 className={i !== 1 ? "testimonial-secondary-wrapper" : ""}
               >
