@@ -12,14 +12,26 @@ export default function BrochureModal() {
 
   useEffect(() => {
     setMounted(true);
-    // Show brochure modal on initial page visit / refresh (F5), NOT when switching routes
-    if (!hasShownInCurrentLoad) {
-      hasShownInCurrentLoad = true;
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 1200);
 
-      return () => clearTimeout(timer);
+    try {
+      // Detect if user performed F5 / Browser Reload
+      const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+      const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
+
+      // Detect if initial visit in session
+      const alreadyVisited = sessionStorage.getItem("brochure_visited");
+
+      // Show popup ONLY on F5 refresh or initial site visit, NOT when switching pages
+      if (isReload || !alreadyVisited) {
+        sessionStorage.setItem("brochure_visited", "true");
+        const timer = setTimeout(() => {
+          setIsOpen(true);
+        }, 1200);
+
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // Fallback
     }
   }, []);
 
