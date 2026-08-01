@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { siteConfig } from "@/lib/data/site";
+import { ExternalLink } from "lucide-react";
 
 const HERO_DESKTOP_IMAGE = "/images/home/hero-desktop.webp";
 const HERO_MOBILE_IMAGE = "/images/home/hero-mobile.webp";
@@ -15,12 +17,11 @@ export default function Hero() {
     if (!hero) return;
 
     const onScroll = () => {
-      if (rafRef.current !== null) return; // already scheduled
+      if (rafRef.current !== null) return;
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = null;
         const bg = hero.querySelector<HTMLDivElement>(".hero-bg");
         if (!bg) return;
-        // Only apply parallax on desktop
         if (window.innerWidth > 768) {
           bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
         } else {
@@ -40,15 +41,6 @@ export default function Hero() {
     <>
       <section ref={heroRef} className="hero" aria-label="Hero — Tropical Bay by Malpe">
         <div className="hero-bg" aria-hidden="true">
-          {/*
-           * Desktop image — hidden on mobile via CSS, NOT priority on mobile.
-           * The `sizes` attribute ensures the browser picks the right srcset entry.
-           * We use two separate <Image> tags so Next.js can generate
-           * both srcsets independently. Display toggling is done in CSS only,
-           * which means only the *visible* image is downloaded by the browser
-           * (browsers don't download images for display:none elements when
-           * they are media-query driven — but to be safe we use fetchpriority).
-           */}
           <Image
             src={HERO_DESKTOP_IMAGE}
             alt=""
@@ -58,11 +50,6 @@ export default function Hero() {
             sizes="100vw"
             className="hero-bg-image hero-bg-desktop"
           />
-          {/*
-           * Mobile image — only fetched on mobile.
-           * We don't mark it priority so desktop doesn't preload it.
-           * CSS hides it on desktop so it is never rendered there.
-           */}
           <Image
             src={HERO_MOBILE_IMAGE}
             alt=""
@@ -102,6 +89,45 @@ export default function Hero() {
                 Book Now
               </a>
             </div>
+
+            {/* OTA Platform Direct Buttons (Booking.com, Agoda, Airbnb) */}
+            <div className="hero-ota-wrap animate-hero-4">
+              <span className="hero-ota-label">Also Available On</span>
+              <div className="hero-ota-pills">
+                <a
+                  href={siteConfig.bookingPlatforms.bookingCom}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-ota-pill ota-booking"
+                >
+                  <span className="ota-icon-badge">B.</span>
+                  <span>Booking.com</span>
+                  <ExternalLink size={10} className="ota-ext-icon" />
+                </a>
+
+                <a
+                  href={siteConfig.bookingPlatforms.agoda}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-ota-pill ota-agoda"
+                >
+                  <span className="ota-icon-badge">a</span>
+                  <span>Agoda</span>
+                  <ExternalLink size={10} className="ota-ext-icon" />
+                </a>
+
+                <a
+                  href={siteConfig.bookingPlatforms.airbnb}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-ota-pill ota-airbnb"
+                >
+                  <span className="ota-icon-badge">★</span>
+                  <span>Airbnb</span>
+                  <ExternalLink size={10} className="ota-ext-icon" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -136,7 +162,6 @@ export default function Hero() {
           object-position: center;
         }
 
-        /* ── Desktop: show desktop, hide mobile ── */
         .hero-bg-desktop {
           display: block !important;
         }
@@ -227,7 +252,7 @@ export default function Hero() {
           padding-top: 0.35rem;
         }
 
-         .hero-btn {
+        .hero-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -265,6 +290,83 @@ export default function Hero() {
           background: rgba(255, 255, 255, 0.08);
           border-color: var(--color-white);
           transform: translateY(-1px);
+        }
+
+        /* OTA Platform Section in Hero */
+        .hero-ota-wrap {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+        }
+
+        .hero-ota-label {
+          font-family: var(--font-sans);
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--color-gold);
+        }
+
+        .hero-ota-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+
+        .hero-ota-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          font-family: var(--font-sans);
+          font-size: 0.72rem;
+          font-weight: 600;
+          color: #ffffff;
+          padding: 0.4rem 0.85rem;
+          border-radius: 4px;
+          text-decoration: none;
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+        }
+
+        .hero-ota-pill:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .ota-booking {
+          background: rgba(0, 53, 128, 0.85);
+        }
+        .ota-booking:hover {
+          background: #003580;
+          border-color: #38bfc8;
+        }
+
+        .ota-agoda {
+          background: rgba(47, 101, 201, 0.85);
+        }
+        .ota-agoda:hover {
+          background: #2f65c9;
+          border-color: #5392f9;
+        }
+
+        .ota-airbnb {
+          background: rgba(255, 90, 95, 0.85);
+        }
+        .ota-airbnb:hover {
+          background: #FF5A5F;
+          border-color: #ffffff;
+        }
+
+        .ota-icon-badge {
+          font-weight: 800;
+          font-size: 0.75rem;
+        }
+
+        .ota-ext-icon {
+          opacity: 0.8;
         }
 
         .hero-scroll {
@@ -331,7 +433,6 @@ export default function Hero() {
         .animate-hero-4 { animation: fadeUp 0.7s ease 0.55s both; }
         .animate-hero-5 { animation: fadeIn 0.7s ease 1s both; }
 
-        /* ── Mobile: show mobile image, hide desktop ── */
         @media (max-width: 768px) {
           .hero {
             min-height: 100svh;

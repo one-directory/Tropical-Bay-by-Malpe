@@ -94,6 +94,11 @@ export const siteConfig = {
   socialLinks: {
     instagram: "https://www.instagram.com/tropical.malpe",
   },
+  bookingPlatforms: {
+    bookingCom: "https://www.booking.com/hotel/in/coral-reefs-of-malpe-udupi.html",
+    agoda: "https://www.agoda.com/en-in/trophical-bay/hotel/udupi-in.html",
+    airbnb: "https://www.airbnb.com/s/Tropical-bay-by-Malpe--Udupi/homes",
+  },
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.5591721719265!2d74.72144346131034!3d13.299992383933297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbcbb02100caa45%3A0x9a891aa53c48fb82!2sTropical%20Bay%20-%20Udupi!5e0!3m2!1sen!2sin!4v1782990172561!5m2!1sen!2sin",
 } as const;

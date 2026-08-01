@@ -6,7 +6,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
 import { InstagramIcon } from "@/components/ui/SocialIcons";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { getBreadcrumbSchema, getHotelSchema } from "@/lib/seo/schemas";
 
 export const metadata: Metadata = {
@@ -152,6 +152,72 @@ export default function ContactPage() {
                   <div className="social-links">
                     <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
                       <InstagramIcon size={16} />
+                    </a>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: "1px solid rgba(30, 41, 59, 0.08)" }}>
+                  <p className="info-label" style={{ marginBottom: "0.6rem" }}>Book via Online Platforms</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                    <a
+                      href={siteConfig.bookingPlatforms.bookingCom}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.35rem",
+                        padding: "0.45rem 0.8rem",
+                        borderRadius: "4px",
+                        background: "#003580",
+                        color: "#ffffff",
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        textDecoration: "none"
+                      }}
+                    >
+                      <span>Booking.com</span>
+                      <ExternalLink size={12} />
+                    </a>
+                    <a
+                      href={siteConfig.bookingPlatforms.agoda}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.35rem",
+                        padding: "0.45rem 0.8rem",
+                        borderRadius: "4px",
+                        background: "#2f65c9",
+                        color: "#ffffff",
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        textDecoration: "none"
+                      }}
+                    >
+                      <span>Agoda</span>
+                      <ExternalLink size={12} />
+                    </a>
+                    <a
+                      href={siteConfig.bookingPlatforms.airbnb}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.35rem",
+                        padding: "0.45rem 0.8rem",
+                        borderRadius: "4px",
+                        background: "#FF5A5F",
+                        color: "#ffffff",
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        textDecoration: "none"
+                      }}
+                    >
+                      <span>Airbnb</span>
+                      <ExternalLink size={12} />
                     </a>
                   </div>
                 </div>
