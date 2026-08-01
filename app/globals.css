@@ -773,6 +773,56 @@ button {
   background: rgba(169, 129, 75, 0.1);
 }
 
+/* Distinct Footer Brochure Pill Button */
+.footer-brochure-pill-wrap {
+  margin-top: 1.35rem;
+}
+
+.footer-brochure-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  font-family: var(--font-jakarta), sans-serif;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 220ms ease;
+}
+
+.footer-brochure-pill:hover {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+.brochure-pill-icon {
+  color: #34d399;
+  transition: color 220ms ease;
+}
+
+.footer-brochure-pill:hover .brochure-pill-icon {
+  color: #ffffff;
+}
+
+.brochure-pill-dl {
+  opacity: 0.8;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.footer-brochure-pill:hover .brochure-pill-dl {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
 .footer-col-title {
   font-family: var(--font-sans);
   font-size: 0.68rem;

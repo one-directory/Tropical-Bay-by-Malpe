@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import BrochureModal from "@/components/ui/BrochureModal";
 import { siteConfig } from "@/lib/data/site";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import {
@@ -120,6 +121,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <ScrollToTop />
+        <BrochureModal />
       </body>
     </html>
   );

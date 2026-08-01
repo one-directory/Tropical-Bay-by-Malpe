@@ -1,6 +1,6 @@
 
 
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, FileText, Download, Eye } from "lucide-react";
 
 import { navItems, siteConfig } from "@/lib/data/site";
 
@@ -87,33 +87,33 @@ export default function Footer() {
               </p>
 
               <div className="footer-socials">
-
                 {socialLinks.map(({ label, icon: Icon, href }) => (
-
                   <a
-
                     key={label}
-
                     href={href}
-
                     target="_blank"
-
                     rel="noopener noreferrer"
-
                     className="footer-social-link"
-
                     aria-label={label}
-
                   >
-
                     <Icon size={16} />
-
                   </a>
-
                 ))}
-
               </div>
 
+              {/* Distinct Resort Brochure Pill Button */}
+              <div className="footer-brochure-pill-wrap">
+                <a
+                  href={siteConfig.brochureUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-brochure-pill"
+                >
+                  <FileText size={15} className="brochure-pill-icon" />
+                  <span>Resort Brochure</span>
+                  <Download size={14} className="brochure-pill-dl" />
+                </a>
+              </div>
             </div>
 
 
