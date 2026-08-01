@@ -4,18 +4,23 @@ import { useState, useEffect } from "react";
 import { siteConfig } from "@/lib/data/site";
 import { FileText, Download, Eye, X, BookOpen } from "lucide-react";
 
+let hasShownInCurrentLoad = false;
+
 export default function BrochureModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Show brochure modal on page visit / refresh after 1.2s delay
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1200);
+    // Show brochure modal on initial page visit / refresh (F5), NOT when switching routes
+    if (!hasShownInCurrentLoad) {
+      hasShownInCurrentLoad = true;
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 1200);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   if (!mounted) return null;
