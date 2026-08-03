@@ -71,10 +71,6 @@ export default function BrochureModal() {
               Official Resort Brochure
             </p>
 
-            <p className="brochure-modal-desc">
-              Explore our boutique riverside sanctuaries, stone cottages, backwater activities, and coastal dining options.
-            </p>
-
             <div className="brochure-modal-actions">
               <a
                 href={siteConfig.brochureUrl}
