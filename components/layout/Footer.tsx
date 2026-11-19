@@ -297,6 +297,15 @@ export default function Footer() {
 
           </p>
 
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+            <img
+              src="/makeinindia1.jpeg"
+              alt="Make in India"
+              style={{ height: "40px", width: "auto", background: "#fff", padding: "4px", borderRadius: "4px" }}
+            />
+            <span className="footer-copyright">Made with ❤️ One Directory</span>
+          </div>
+
         </div>
 
       </div>
