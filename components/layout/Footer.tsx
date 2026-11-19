@@ -297,13 +297,25 @@ export default function Footer() {
 
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.75rem",
+              flexWrap: "wrap",
+              width: "100%",
+              paddingTop: "0.75rem",
+              borderTop: "1px solid rgba(255, 255, 255, 0.06)",
+            }}
+          >
             <img
               src="/makeinindia1.jpeg"
               alt="Make in India"
-              style={{ height: "40px", width: "auto", background: "#fff", padding: "4px", borderRadius: "4px" }}
+              style={{ height: "28px", width: "auto", background: "#fff", padding: "3px 6px", borderRadius: "4px", display: "block" }}
             />
-            <span className="footer-copyright">Made with ❤️ One Directory</span>
+            <span aria-hidden="true" style={{ width: "1px", height: "18px", background: "rgba(255,255,255,0.2)" }} />
+            <span className="footer-copyright" style={{ width: "auto" }}>Made with ❤️ One Directory</span>
           </div>
 
         </div>
